@@ -5,14 +5,13 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-const Navbar = ({children}) => {
-  const isMobile = useMediaQuery({ query: '(max-width: 1024px)' });
+const Navbar = ({ children }) => {
+  const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
   const [navbarOpen, setNavbarOpen] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     setNavbarOpen(false);
-  }, [isMobile])
-
+  }, [isMobile]);
 
   return (
     <div className="h-[5.5rem]">
@@ -34,11 +33,20 @@ const Navbar = ({children}) => {
                 class="py-5 absolute top-full right-2 shadow-lg max-w-[200px] w-full rounded-lg px-7  bg-white lg:block lg:static lg:max-w-full lg:bg-transparent lg:shadow-none lg:rounded-none"
               >
                 <ul class="block lg:flex">
-                  <NavLink to={"/permainan"}>
-                    <span class="text-base lg:font-semibold mb-3 flex text-primary  lg:mx-6">
-                      Mulai Bermain
-                    </span>
-                  </NavLink>
+                  <li class="group">
+                    <NavLink to={"/permainan"}>
+                      <span class="text-base lg:font-semibold mb-3 flex text-primary  lg:mx-6">
+                        Mulai Bermain
+                      </span>
+                    </NavLink>
+                  </li>
+                  <li class="group">
+                    <NavLink to={"/event"}>
+                      <span class="text-base lg:font-semibold mb-3 flex text-primary  lg:mx-6">
+                        Event
+                      </span>
+                    </NavLink>
+                  </li>
                   <li class="group">
                     <NavLink to={"/signin"}>
                       <span className="text-base lg:font-semibold mb-3 flex text-dark group-hover:text-primary lg:mx-6">
@@ -58,11 +66,10 @@ const Navbar = ({children}) => {
             </div>
           </div>
         </div>
-      </nav>
+      </header>
       <div className="h-[4rem] xl:h-[5.5rem]"></div>
-    </>
+    </div>
   );
-}
-
+};
 
 export default Navbar;
