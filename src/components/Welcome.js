@@ -3,43 +3,32 @@ import Congklak from "../asset/img/congklak.png";
 
 const Welcome = () => {
   return (
-    <div className="min-h-screen">
-      <section id="home">
-        <div class="container">
-          <div class="flex flex-wrap">
-            <div class="w-full self-center px-4 lg:w-1/2">
-              <h1 class="text-primary">
-                <span class="block font-bold text-5xl mt-1 md:text-5xl lg:text-6xl">
+    <div className="full-no-navbar bg-primary">
+      <section id="home" className="h-full">
+        <div class="container h-full">
+          <div class="lg:grid h-full grid-cols-2 flex flex-col-reverse justify-around items-center">
+            <div class="w-full px-4 text-white flex flex-col text-center lg:text-start lg:gap-y-10">
+              <h1 class=" block font-bold text-5xl mt-1 md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">
                   GAMBRENG GAME
-                </span>
               </h1>
-
-              <p class="text-secondary mt-5 mb-10 font-medium leading-relaxed lg:text-xl">
+              <p class="mt-5 mb-10 font-medium leading-relaxed lg:text-xl xl:text-2xl">
                 Mainkan permainan tradisional yang asik dan menyenangkan bersama
                 teman-temanmu melalui aplikasi kami.
               </p>
             </div>
-            <div class="w-full self-end px-4 lg:w-1/2">
-              <div class="relative mt-10 lg:mt-9 lg:right-0">
-                <img
-                  src={Congklak}
-                  alt="Congklak"
-                  class="relative top-20 max-w-full mx-auto"
-                />
-                <span class="absolute -bottom-16 -z-10 left-1/2 -translate-x-1/2 md:scale-150 sm:-bottom-0 md:-bottom-0">
-                  <svg
-                    width="400"
-                    height="400"
-                    viewBox="0 0 200 200"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill="#FE4918"
-                      d="M63.4,-21.3C72.2,6.6,62.6,39.8,39.3,57.7C15.9,75.5,-21.2,77.9,-39.9,62.5C-58.7,47.1,-59.1,13.9,-49.3,-15.2C-39.6,-44.4,-19.8,-69.4,3.7,-70.6C27.3,-71.9,54.5,-49.2,63.4,-21.3Z"
-                      transform="translate(100 100)"
-                    />
-                  </svg>
-                </span>
+            <div class=" w-2/3 lg:w-full pt-[66.666%] lg:pt-[100%] relative">
+              <div className="absolute top-0 w-full h-full">
+                <div class="relative w-full h-full">
+                  <img
+                    src={Congklak}
+                    alt="Congklak"
+                    className="absolute top-1/2 transform left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] z-[1] "
+                  />
+                  <span class="absolute top-1/2 transform left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white w-3/4 h-3/4 rounded-full">
+                  </span>
+                  <span className="absolute top-[2%] left-[55%] text-white text-8xl lg:text-9xl font-bold opacity-20">JOIN</span>
+                  <span className="absolute bottom-[5%] right-1/2 text-white text-8xl lg:text-9xl font-bold opacity-20">JOIN</span>
+                </div>
               </div>
             </div>
           </div>

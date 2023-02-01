@@ -15,3 +15,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.full-no-navbar{
+  @apply h-[calc(100vh-5.5rem)];
+}
+
+.min-full-no-navbar{
+  @apply min-h-[calc(100vh-5.5rem)];
+}
