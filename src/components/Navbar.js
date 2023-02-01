@@ -40,7 +40,7 @@ const Navbar = ({children}) => {
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="w-8 text-black" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                <path d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
               </svg>
             </button>
           </div>
@@ -51,23 +51,23 @@ const Navbar = ({children}) => {
             }
             id="example-navbar-warning"
           >
-            <ul class="block lg:flex text-dark">
-               <li class="group">
+            <ul className="block lg:flex text-dark">
+               <li className="group">
                  <a
                   href="#home"
-                  class="text-base lg:font-semibold flex group-hover:text-primary  lg:mx-6"
+                  className="text-base lg:font-semibold flex group-hover:text-primary  lg:mx-6"
                 >
                   Mulai Bermain
                 </a>
               </li>
-              <li class="group">
-                <NavLink activeClassName="active" to={"/signin"}>
+              <li className="group">
+                <NavLink to={"/signin"}>
                   <span className="text-base lg:font-semibold flex group-hover:text-primary lg:mx-6">
                     Masuk
                   </span>
                 </NavLink>
               </li>   
-              <li class="group">
+              <li className="group">
                 <NavLink to={"/signup"}>
                   <span className="text-base lg:font-semibold flex group-hover:text-primary lg:mx-6">
                     Daftar
