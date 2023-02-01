@@ -4,6 +4,17 @@ const ListPermainan = () => {
   return (
     <div className="min-full-no-navbar pt-24">
       <div class="container">
+        <div class="relative">
+          <div class="fixed bottom-11 right-8 w-10 h-10">
+            <a
+              href="!#"
+              target="_blank"
+              class="absolute border-2 border-black w-16 h-16 mr-3 flex justify-center items-center rounded-full bg-primary hover:border-primary text-white"
+            >
+              <span className="text-2xl">💬</span>
+            </a>
+          </div>
+        </div>
         <div class="flex flex-wrap px-4">
           <div class="xl:w-full px-4">
             <div class="rounded-xl shadow-lg overflow-hidden bg-white mb-10">
