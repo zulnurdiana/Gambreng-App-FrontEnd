@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landingpage from "./pages/Landingpage";
 import Masuk from "./pages/Masuk";
 import Daftar from "./pages/Daftar";
+import Event from "./pages/Event";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
           <Route path="/" element={<Landingpage />} />
           <Route path="/signin" element={<Masuk />} />
           <Route path="/signup" element={<Daftar />} />
+          <Route path="/event" element={<Event />} />
         </Routes>
       </BrowserRouter>
     </div>
