@@ -1,11 +1,18 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import AlertProvider from "../contexts/AlertProvider";
 
 const Layout = ({ children }) => {
   return (
     <React.Fragment>
-      <Navbar />
-      <main>{children}</main>
+      <div className="relative">
+        <AlertProvider>
+          <>
+            <Navbar />
+            <main>{children}</main>
+          </>
+        </AlertProvider>
+      </div>
     </React.Fragment>
   );
 };
