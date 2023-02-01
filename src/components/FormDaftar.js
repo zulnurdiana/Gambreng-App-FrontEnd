@@ -3,7 +3,7 @@ import fotodaftar from "../asset/img/sign_up.png";
 
 const FormDaftar = () => {
   return (
-    <div className="min-h-screen py-28">
+    <div className="full-no-navbar py-28">
       <div class="container">
         <div class="flex flex-wrap">
           <div class="px-4 lg:w-1/2 justify-center">

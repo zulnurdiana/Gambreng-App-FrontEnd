@@ -3,7 +3,7 @@ import fotologin from "../asset/img/sign_in.png";
 
 const FormMasuk = () => {
   return (
-    <div className="min-h-screen pt-32">
+    <div className="min-full-no-navbar pt-32">
       <div class="container">
         <div class="flex flex-wrap">
           <div class="px-4 lg:w-1/2 justify-center">
