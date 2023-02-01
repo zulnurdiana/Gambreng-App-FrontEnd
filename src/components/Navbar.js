@@ -5,14 +5,13 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-const Navbar = ({children}) => {
-  const isMobile = useMediaQuery({ query: '(max-width: 1024px)' });
+const Navbar = ({ children }) => {
+  const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
   const [navbarOpen, setNavbarOpen] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     setNavbarOpen(false);
-  }, [isMobile])
-
+  }, [isMobile]);
 
   return (
     <>
@@ -77,11 +76,10 @@ const Navbar = ({children}) => {
             </ul>
           </div>
         </div>
-      </nav>
+        </nav>
       <div className="h-[4rem] xl:h-[5.5rem]"></div>
-    </>
+      </>
   );
-}
-
+};
 
 export default Navbar;
