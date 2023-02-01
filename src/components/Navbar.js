@@ -23,14 +23,11 @@ const Navbar = () => {
                 class="py-5 absolute top-full right-2 shadow-lg max-w-[200px] w-full rounded-lg px-7  bg-white lg:block lg:static lg:max-w-full lg:bg-transparent lg:shadow-none lg:rounded-none"
               >
                 <ul class="block lg:flex">
-                  <li class="group">
-                    <a
-                      href="#home"
-                      class="text-base lg:font-semibold mb-3 flex text-primary  lg:mx-6"
-                    >
+                  <NavLink to={"/permainan"}>
+                    <span class="text-base lg:font-semibold mb-3 flex text-primary  lg:mx-6">
                       Mulai Bermain
-                    </a>
-                  </li>
+                    </span>
+                  </NavLink>
                   <li class="group">
                     <NavLink to={"/signin"}>
                       <span className="text-base lg:font-semibold mb-3 flex text-dark group-hover:text-primary lg:mx-6">
