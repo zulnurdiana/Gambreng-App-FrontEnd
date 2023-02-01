@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import fotologin from "../asset/img/sign_in.png";
 
 const FormMasuk = () => {
@@ -40,9 +41,11 @@ const FormMasuk = () => {
                   type="email"
                   class="p-2 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"
                 />
-                <p className="text-end text-sm italic text-primary">
-                  Forget password?
-                </p>
+                <Link to="/forgot-password">
+                  <p className="text-end text-sm italic text-primary">
+                    Forget password?
+                  </p>
+                </Link>
               </div>
 
               <div class="w-full px-4 mt-20">
