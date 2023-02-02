@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const ListPermainan = () => {
   const [showForum, setForum] = useState(false);
   const handleOnClose = () => setForum(false);
-  
+
   return (
     <div className="min-full-no-navbar pt-24">
       <div className="container">

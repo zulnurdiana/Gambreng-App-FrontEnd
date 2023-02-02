@@ -3,7 +3,7 @@ import React from "react";
 const Forum = ({ visible, onClose }) => {
   if (!visible) return null;
   return (
-    <div className="rounded-xl fixed top-[20%] right-24 shadow-lg px-5 py-5 border-2 border-primary  bg-white bg-opacity-50 backdrop-blur-sm max-w-md">
+    <div className="rounded-xl fixed top-[20%] right-24 shadow-lg px-5 py-5 border-2 border-primary  bg-white bg-opacity-30 backdrop-blur-sm max-w-md">
       <div class="relative">
         <button
           onClick={onClose}
@@ -19,35 +19,35 @@ const Forum = ({ visible, onClose }) => {
         <hr className="bg-primary" />
       </h1>
 
-      <div class="flex flex-col max-w-md bg-gray-200 rounded-lg p-4">
+      <div class="flex flex-col max-w-md bg-gray-200 rounded-r-full p-4 border border-black">
         <div class="mt-0">
-          <p class="text-primary text-sm">Renaldy</p>
+          <p class="text-primary text-sm font-extrabold">Renaldy</p>
           <p class="text-gray-900 font-medium">
             Ayo mabar cuy, game yang seru apa yah?
           </p>
         </div>
       </div>
 
-      <div class="flex flex-col-reverse max-w-md bg-white rounded-lg p-4">
+      <div class="flex flex-col-reverse max-w-md bg-slate-300 rounded-r-full p-4 border border-black">
         <div class="flex-shrink-0 ml-auto"></div>
         <div class="mt-1">
-          <p class="text-primary text-sm">Taufiq</p>
+          <p class="text-primary text-sm font-extrabold">Taufiq</p>
           <p class="text-gray-900 font-medium">
             Game tradisional mah bosenin cuy, login ML aja
           </p>
         </div>
       </div>
 
-      <div class="flex flex-col max-w-md bg-gray-200 rounded-lg p-4">
+      <div class="flex flex-col max-w-md bg-gray-200 rounded-r-full p-4 border border-black">
         <div class="mt-0">
-          <p class="text-primary text-sm">Fajar</p>
+          <p class="text-primary text-sm font-extrabold">Fajar</p>
           <p class="text-gray-900 font-medium">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
         </div>
       </div>
 
-      <div class="mt-8">
+      <div class="mt-8 rounded-lg">
         <form class="bg-white rounded-lg p-2">
           <input
             class="w-[73%] p-2 rounded-lg  bg-slate-100  focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary  text-dark"
