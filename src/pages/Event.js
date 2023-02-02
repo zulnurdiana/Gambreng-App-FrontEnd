@@ -1,12 +1,16 @@
 import React from "react";
 import Layout from "./Layout";
 import ListEvent from "../components/ListEvent";
+import Footer from "../components/Footer";
 
 const Event = () => {
   return (
-    <Layout>
-      <ListEvent />
-    </Layout>
+    <React.Fragment>
+      <Layout>
+        <ListEvent />
+      </Layout>
+      <Footer/>
+    </React.Fragment>
   );
 };
 
