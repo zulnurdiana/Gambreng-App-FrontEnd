@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 
 const FormTambahAcara = () => {
   return (
-
     <div className="min-full-no-navbar pt-20">
       <div class="container">
         <div class="xl:w-3/5 mx-auto">
@@ -13,7 +12,7 @@ const FormTambahAcara = () => {
                 <span class="block font-bold mt-1 mb-2  lg:text-4xl text-primary">
                   FORM TAMBAH EVENT
                 </span>
-                <hr />
+                <hr className={"w-full h-[3px]  my-1 bg-primary"} />
               </h1>
 
               <div className="w-full mb-5 px-4 py-7">

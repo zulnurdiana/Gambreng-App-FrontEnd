@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import fotologin from "../asset/img/sign_in.png";
@@ -7,10 +7,9 @@ import AuthContext from "../contexts/AuthProvider";
 import { AlertContext } from "../contexts/AlertProvider";
 import jwtDecode from "jwt-decode";
 
-const FormMasuk = ()=>{
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const FormMasuk = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,40 +19,44 @@ const FormMasuk = ()=>{
 
   const from = location.state?.from?.pathname || "/";
 
-  const handleSubmit  = async(e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-        const {data:response} = await axios.post('/auth/signin', 
-          JSON.stringify({email,password}), 
-          {withCredentials:true, headers : {'Content-Type': 'application/json'} 
-        })
+      const { data: response } = await axios.post(
+        "/auth/signin",
+        JSON.stringify({ email, password }),
+        {
+          withCredentials: true,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
-        const decodedRes = jwtDecode(response.data.accessToken)
-        const accessToken = response.data.accessToken;
-        const resEmail = decodedRes.email;
-        const isAdmin = decodedRes.role == 'admin';
-        
-        setAlert('success','Berhasil Masuk');
-        setAccessToken(accessToken);
-        setAuth({accessToken, email : resEmail, isAdmin});
-        setEmail('');
-        setPassword('');
-        navigate(from, { replace: true });
+      const decodedRes = jwtDecode(response.data.accessToken);
+      const accessToken = response.data.accessToken;
+      const resEmail = decodedRes.email;
+      const isAdmin = decodedRes.role === "admin";
+
+      setAlert("success", "Berhasil Masuk");
+      setAccessToken(accessToken);
+      setAuth({ accessToken, email: resEmail, isAdmin });
+      setEmail("");
+      setPassword("");
+      navigate(from, { replace: true });
     } catch (err) {
       console.log(err);
-        if (!err?.response) {
-            setAlert('error','No Server Response');
-        } else if (err.response?.status === 400) {
-            setAlert('error','Missing Username or Password');
-        } else if (err.response?.status === 401) {
-            setAlert('error','Invalid Username / Password');
-        } else {
-            setAlert('error','Something Went Wrong');
-        }
+      if (!err?.response) {
+        setAlert("error", "No Server Response");
+      } else if (err.response?.status === 400) {
+        setAlert("error", "Missing Username or Password");
+      } else if (err.response?.status === 401) {
+        setAlert("error", "Invalid Username / Password");
+      } else {
+        setAlert("error", "Something Went Wrong");
+      }
     }
-  }
-    
+  };
+
   return (
     <div className="min-full-no-navbar pt-32">
       <div className="container">
@@ -72,11 +75,15 @@ const FormMasuk = ()=>{
             </center>
           </div>
           <div class="lg:w-1/2">
-            <form className="ml-12 px-4 border py-12 rounded-lg shadow-lg lg:w-5/6"
+            <form
+              className="ml-12 px-4 border py-12 rounded-lg shadow-lg lg:w-5/6"
               onSubmit={handleSubmit}
             >
               <div class="w-full mb-6 px-4">
-                <label html-for="nama" class="font-medium text-secondary text-base">
+                <label
+                  html-for="nama"
+                  class="font-medium text-secondary text-base"
+                >
                   Email
                 </label>
                 <input
@@ -84,11 +91,14 @@ const FormMasuk = ()=>{
                   type="email"
                   class="p-2 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"
                   value={email}
-                  onChange={(e)=>setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div class="w-full mb-8 px-4">
-                <label html-for="password" class="font-medium text-secondary text-base">
+                <label
+                  html-for="password"
+                  class="font-medium text-secondary text-base"
+                >
                   Password
                 </label>
                 <input
@@ -96,7 +106,7 @@ const FormMasuk = ()=>{
                   type="password"
                   class="p-2 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"
                   value={password}
-                  onChange={(e)=>setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <Link to="/forgot-password">
                   <p className="text-end text-sm italic text-primary">
@@ -120,5 +130,5 @@ const FormMasuk = ()=>{
       </div>
     </div>
   );
-}
+};
 export default FormMasuk;

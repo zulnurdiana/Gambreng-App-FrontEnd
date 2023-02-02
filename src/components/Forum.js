@@ -16,7 +16,7 @@ const Forum = ({ visible, onClose }) => {
         <span class="block font-bold mt-1 mb-2 lg:text-4xl text-primary">
           Forum Global
         </span>
-        <hr className="bg-primary" />
+        <hr className="w-full h-[2px]  my-1 bg-primary" />
       </h1>
 
       <div class="flex flex-col max-w-md bg-gray-200 rounded-r-full p-4 border border-black">
