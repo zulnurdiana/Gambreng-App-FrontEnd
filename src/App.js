@@ -8,6 +8,10 @@ import Permainan from "./pages/Permainan";
 import DetailEvent from "./pages/DetailEvent";
 import TambahAcara from "./pages/TambahAcara";
 import TambahSimulasi from "./pages/TambahSimulasi";
+import TambahForum from "./pages/TambahForum";
+import UbahAcara from "./pages/UbahAcara";
+import UbahSimulasi from "./pages/UbahSimulasi";
+import UbahForum from "./pages/UbahForum";
 function App() {
   return (
     <div>
@@ -22,6 +26,10 @@ function App() {
           <Route path="/detailevent" element={<DetailEvent />} />
           <Route path="/tambah-acara" element={<TambahAcara />} />
           <Route path="/tambah-simulasi" element={<TambahSimulasi />} />
+          <Route path="/tambah-forum" element={<TambahForum />} />
+          <Route path="/ubah-acara" element={<UbahAcara />} />
+          <Route path="/ubah-simulasi" element={<UbahSimulasi />} />
+          <Route path="/ubah-forum" element={<UbahForum />} />
         </Routes>
       </BrowserRouter>
     </div>
