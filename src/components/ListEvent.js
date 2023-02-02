@@ -5,6 +5,22 @@ const ListEvent = () => {
   return (
     <div className="min-full-no-navbar pt-24">
       <div className="container">
+        <NavLink
+          to={"/tambah-acara"}
+          className="ml-8 flex items-center w-[15%] font-bold text-white rounded-lg mb-8 px-5 py-2 text-base z-50 bg-primary"
+        >
+          <span className="fill-current mr-3">
+            <svg
+              role="img"
+              width="20"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M18 13.496h-4.501v4.484h-3v-4.484H6v-2.99h4.5V6.021h3.001v4.485H18v2.99zM21 .041H3C1.348.043.008 1.379 0 3.031v17.94c.008 1.65 1.348 2.986 3 2.988h18c1.651-.002 2.991-1.338 3-2.988V3.031c-.009-1.652-1.348-2.987-3-2.99z" />
+            </svg>
+          </span>{" "}
+          Tambah Event
+        </NavLink>
         <div className="flex flex-wrap px-4">
           <div className="xl:w-1/4 px-4">
             <div className="rounded-xl shadow-lg overflow-hidden bg-white mb-10">
