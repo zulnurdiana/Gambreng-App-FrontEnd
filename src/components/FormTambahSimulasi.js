@@ -5,6 +5,7 @@ const FormTambahSimulasi = () => {
   return (
     <div className="min-full-no-navbar pt-20">
       <div class="container">
+
         <div class="xl:w-3/5 mx-auto">
           <div class="mb-20 rounded-xl shadow-xl content-around border border-primary">
             <div class="px-10 py-10 justify-center">
