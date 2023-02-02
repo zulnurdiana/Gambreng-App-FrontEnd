@@ -48,20 +48,23 @@ const DetailAcara = () => {
               praesentium est, rerum esse illum!
             </p>
             <p className="max-w-md text-justify mt-6 text-dark font-medium leading-relaxed lg:text-xl">
-              📞 08123456789
+              <span className="text-white">📞</span> 08123456789
             </p>
           </div>
         </div>
         <div className="mb-12 flex items-center">
           <NavLink
             to={"/event"}
-            className="border-2 border-slate-400 w-10 h-10 mr-3 flex justify-center items-center rounded-full bg-primary hover:border-primary text-white"
+            className="border-2 border-slate-400 w-14 h-14 mr-3 flex justify-center items-center rounded-full bg-primary hover:border-primary text-white"
           >
-            <span className="text-lg font-bold border-none">🎪</span>
+            <span className="text-lg font-bold border-none">👨‍👩‍👧‍👦</span>
           </NavLink>
-          <p className="font-normal text-primary lg:text-2xl">
+          <NavLink
+            to={"/event"}
+            className="font-normal tracking-wide underline decoration-primary text-primary lg:text-2xl"
+          >
             Kembali ke acara
-          </p>
+          </NavLink>
         </div>
       </div>
     </div>
