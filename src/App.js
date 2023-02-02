@@ -6,6 +6,8 @@ import Event from "./pages/Event";
 import LupaPassword from "./pages/LupaPassword";
 import Permainan from "./pages/Permainan";
 import DetailEvent from "./pages/DetailEvent";
+import TambahAcara from "./pages/TambahAcara";
+import TambahSimulasi from "./pages/TambahSimulasi";
 function App() {
   return (
     <div>
@@ -18,6 +20,8 @@ function App() {
           <Route path="/event" element={<Event />} />
           <Route path="/permainan" element={<Permainan />} />
           <Route path="/detailevent" element={<DetailEvent />} />
+          <Route path="/tambah-acara" element={<TambahAcara />} />
+          <Route path="/tambah-simulasi" element={<TambahSimulasi />} />
         </Routes>
       </BrowserRouter>
     </div>
