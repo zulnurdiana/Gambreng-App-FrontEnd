@@ -16,14 +16,14 @@ code {
     monospace;
 }
 
-.full-no-navbar{
-  @apply h-[calc(100vh-4rem)] lg:h-[calc(100vh-5.5rem)];
+.full-no-navbar {
+  @apply h-[calc(100vh-4rem)] lg:h-[calc(100vh-3.7rem)];
 }
 
-.min-full-no-navbar{
-  @apply min-h-[calc(100vh-4rem)] lg:min-h-[calc(100vh-5.5rem)];
+.min-full-no-navbar {
+  @apply min-h-[calc(100vh-4rem)] lg:min-h-[calc(100vh-3.7em)];
 }
 
-.active{
+.active {
   @apply text-primary;
 }

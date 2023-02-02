@@ -56,15 +56,15 @@ const FormMasuk = ()=>{
     
   return (
     <div className="min-full-no-navbar pt-32">
-      <div class="container">
-        <div class="flex flex-wrap">
-          <div class="px-4 lg:w-1/2 justify-center">
-            <h1 class="text-dark text-center">
-              <span class="block font-bold mt-1  lg:text-4xl">
+      <div className="container">
+        <div className="flex flex-wrap">
+          <div className="px-4 lg:w-1/2 justify-center">
+            <h1 className="text-dark text-center">
+              <span className="block font-bold mt-1  lg:text-4xl">
                 Selamat Datang !
               </span>
             </h1>
-            <p class=" max-w-sm mx-auto text-secondary text-center mt-3 font-medium leading-relaxed lg:text-sm">
+            <p className=" max-w-sm mx-auto text-secondary text-center mt-3 font-medium leading-relaxed lg:text-sm">
               Ayo masuk dan bermain bersama kami untuk menemukan teman baru.
             </p>
             <center>
@@ -105,8 +105,8 @@ const FormMasuk = ()=>{
                 </Link>
               </div>
 
-              <div class="w-full px-4 mt-20">
-                <button class="py-2 px-4 w-full rounded-full bg-primary font-bold text-white hover:opacity-80 hover:shadow-lg transition duration-500 lg:text-base">
+              <div className="w-full px-4 mt-20">
+                <button className="py-2 px-4 w-full rounded-full bg-primary font-bold text-white hover:opacity-80 hover:shadow-lg transition duration-500 lg:text-base">
                   SIGN IN
                 </button>
               </div>
