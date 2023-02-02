@@ -55,11 +55,13 @@ const DetailAcara = () => {
         <div className="mb-12 flex items-center">
           <NavLink
             to={"/event"}
-            className="border-2 border-black w-10 h-10 mr-3 flex justify-center items-center rounded-full bg-primary hover:border-primary text-white"
+            className="border-2 border-slate-400 w-10 h-10 mr-3 flex justify-center items-center rounded-full bg-primary hover:border-primary text-white"
           >
             <span className="text-lg font-bold border-none">🎪</span>
           </NavLink>
-          <p className="font-normal text-primary lg:text-3xl">Daftar Acara</p>
+          <p className="font-normal text-primary lg:text-2xl">
+            Kembali ke acara
+          </p>
         </div>
       </div>
     </div>
