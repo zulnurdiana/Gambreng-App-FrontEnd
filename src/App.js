@@ -6,6 +6,7 @@ import Event from "./pages/Event";
 import LupaPassword from "./pages/LupaPassword";
 import Permainan from "./pages/Permainan";
 import DetailEvent from "./pages/DetailEvent";
+import RequireAuth from "./components/RequireAuth";
 function App() {
   return (
     <div>
@@ -15,9 +16,11 @@ function App() {
           <Route path="/signin" element={<Masuk />} />
           <Route path="/signup" element={<Daftar />} />
           <Route path="/forgot-password" element={<LupaPassword />} />
-          <Route path="/event" element={<Event />} />
-          <Route path="/permainan" element={<Permainan />} />
-          <Route path="/detailevent" element={<DetailEvent />} />
+          <Route element={<RequireAuth/>}>
+            <Route path="/event" element={<Event />} />
+            <Route path="/permainan" element={<Permainan />} />
+            <Route path="/detailevent" element={<DetailEvent />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>

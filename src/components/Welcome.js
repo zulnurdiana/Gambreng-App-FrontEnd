@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useContext} from "react";
 import Congklak from "../asset/img/congklak.png";
+import AuthContext from "../contexts/AuthProvider";
 
 const Welcome = () => {
+  const { auth } = useContext(AuthContext);
   return (
     <div className="full-no-navbar bg-primary">
       <section id="home" className="h-full">
@@ -9,7 +11,7 @@ const Welcome = () => {
           <div class="lg:grid h-full grid-cols-2 flex flex-col-reverse justify-around items-center">
             <div class="w-full px-4 text-white flex flex-col text-center lg:text-start lg:gap-y-10">
               <h1 class=" block font-bold text-5xl mt-1 md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">
-                  GAMBRENG GAME
+                  { auth ? <span>Hi { auth.email }</span> : <span>Gambreng Apps</span>}
               </h1>
               <p class="mt-5 mb-10 font-medium leading-relaxed lg:text-xl xl:text-2xl">
                 Mainkan permainan tradisional yang asik dan menyenangkan bersama
