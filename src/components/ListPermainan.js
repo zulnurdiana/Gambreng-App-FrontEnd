@@ -1,24 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
+import Forum from "./Forum";
 import { NavLink } from "react-router-dom";
 
 const ListPermainan = () => {
+  const [showForum, setForum] = useState(false);
+  const handleOnClose = () => setForum(false);
+  
   return (
     <div className="min-full-no-navbar pt-24">
       <div className="container">
         <div className="relative">
           <div className="fixed bottom-11 right-8 w-10 h-10">
-            <a
-              href="!#"
-              target="_blank"
-              className="absolute border-2 border-black w-16 h-16 mr-3 flex justify-center items-center rounded-full bg-primary hover:border-primary text-white"
+            <button
+              onClick={() => setForum(true)}
+              className="absolute border-2 border-black w-16 h-16 mr-3 flex justify-center items-center rounded-full bg-primary hover:border-primary hover:scale-95 transition duration-500 text-white"
             >
               <span className="text-2xl">💬</span>
-            </a>
+            </button>
           </div>
         </div>
         <NavLink
           to={"/tambah-simulasi"}
-          className="ml-8 flex items-center w-[17%] font-bold text-white rounded-lg mb-8 px-5 py-2 text-base z-50 bg-primary"
+          className="ml-8 flex items-center w-[17%] font-bold text-white rounded-lg mb-8 px-5 py-2 text-base z-50 bg-primary hover:opacity-80 hover:shadow-lg transition duration-500"
         >
           <span className="fill-current mr-3">
             <svg
@@ -154,6 +157,7 @@ const ListPermainan = () => {
             </div>
           </div>
         </div>
+        <Forum onClose={handleOnClose} visible={showForum} />
       </div>
     </div>
   );

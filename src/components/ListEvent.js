@@ -7,7 +7,7 @@ const ListEvent = () => {
       <div className="container">
         <NavLink
           to={"/tambah-acara"}
-          className="ml-8 flex items-center w-[15%] font-bold text-white rounded-lg mb-8 px-5 py-2 text-base z-50 bg-primary"
+          className="ml-8 flex items-center w-[15%] font-bold text-white rounded-lg mb-8 px-5 py-2 text-base z-50 bg-primary hover:opacity-80 hover:shadow-lg transition duration-500"
         >
           <span className="fill-current mr-3">
             <svg
