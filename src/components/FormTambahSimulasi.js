@@ -5,12 +5,13 @@ const FormTambahSimulasi = () => {
     <div className="min-full-no-navbar pt-22">
       <div class="container">
         
-        <div class="mb-20 rounded-xl shadow-xl content-around">
+        <div class="mb-10 rounded-xl shadow-xl content-around ml-40 mr-40">
           <div class="px-10 py-10 justify-center">
             <h1 class="text-39364F text-center">
-              <span class="block font-bold mt-1  lg:text-4xl">
+              <span class="block font-bold mt-1  lg:text-2xl">
                 FORM TAMBAH SIMULASI PERMAINAN
-              </span><hr></hr>
+              </span>
+              <hr class="w-48 h-1 mx-auto my-4 bg-primary border-0 rounded dark:bg-primary"/>
             </h1>
             
             <div className="w-full mb-5 px-4">
@@ -24,7 +25,7 @@ const FormTambahSimulasi = () => {
                 className="p-2 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"/>
             </div>
             <div className="flex">
-                <div className="w-1/3 mb-5 px-4">
+                <div className="w-1/2 mb-5 px-4">
                     <label html-for="tanggal-acara" className="font-medium text-39364F text-base">
                     Asal Daerah 
                     </label>
@@ -32,7 +33,7 @@ const FormTambahSimulasi = () => {
                         <option></option>
                     </select>
                 </div>
-                <div className="w-1/3 mb-5 px-4">
+                <div className="w-1/2 mb-5 px-4">
                     <label html-for="provinsi-acara" className="font-medium text-39364F text-base">
                     Jumlah pemain 
                     </label>
