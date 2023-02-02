@@ -3,14 +3,15 @@ import React from "react";
 const FormTambahAcara = () => {
   return (
     <div className="min-full-no-navbar pt-22">
-      <div class="container">
+      <div class="container m-8">
         
-        <div class="mb-20 rounded-xl shadow-xl content-around">
+        <div class="mb-10 rounded-xl shadow-xl content-around ml-40 mr-40">
           <div class="px-10 py-10 justify-center">
             <h1 class="text-39364F text-center">
-              <span class="block font-bold mt-1  lg:text-4xl">
+              <span class="block font-bold mt-1  lg:text-2xl">
                 FORM TAMBAH EVENT
-              </span><hr></hr>
+              </span>
+              <hr class="w-48 h-1 mx-auto my-4 bg-primary border-0 rounded dark:bg-primary"/>
             </h1>
             
             <div className="w-full mb-5 px-4">
@@ -94,7 +95,9 @@ const FormTambahAcara = () => {
                     "/>
                 </label>
             </div>
-            <button className="bg-primary hover:bg-blue-700 w-full text-white font-bold py-2 px-4 rounded">TAMBAH ACARA</button>
+            <button 
+            className="bg-primary hover:bg-blue-700 w-full text-white font-bold py-2 px-4 rounded"
+            >TAMBAH ACARA</button>
           </div>
         </div>
         
