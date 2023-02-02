@@ -15,11 +15,13 @@ const FormDaftar = () => {
       .post("/auth/signup", {
         email,
         password,
+        confirmPassword
       })
       .then((res) => {
         setAlert('success', 'Berhasil mendaftar, silahkan cek email anda untuk verifikasi');
       })
       .catch((err) => {
+        console.log(err)
         setAlert('error', err.message + ' ');
       });
   };

@@ -1,17 +1,33 @@
 import Logo from "../asset/img/logo.png";
 
 import { useMediaQuery } from "react-responsive";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import AuthContext from "../contexts/AuthProvider";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 const Navbar = ({ children }) => {
   const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
   const [navbarOpen, setNavbarOpen] = useState(false);
 
+  const axiosPrivate = useAxiosPrivate();
+
+  const navigate = useNavigate();
+
+  const {auth, setAuth} = useContext(AuthContext)
+
   useEffect(() => {
     setNavbarOpen(false);
   }, [isMobile]);
+
+  const logout = () => {
+    axiosPrivate.post('/auth/signout', {}, {withCredentials: true})
+    .then((res) => {
+      setAuth(null);
+      navigate('/')
+    })
+  }
 
   return (
     <>
@@ -56,32 +72,49 @@ const Navbar = ({ children }) => {
             id="example-navbar-warning"
           >
             <ul className="block lg:flex text-dark">
-              <li className="group">
-                <NavLink to={"/permainan"}>
-                  <span className="text-base lg:font-semibold flex text-primary lg:mx-6">
+               <li className="group">
+               <NavLink to={"/permainan"}>
+                  <span className="text-base lg:font-semibold flex group-hover:text-primary lg:mx-6">
                     Mulai Bermain
                   </span>
                 </NavLink>
               </li>
               <li className="group">
-                <NavLink to={"/signin"}>
+                <NavLink to={"/event"}>
                   <span className="text-base lg:font-semibold flex group-hover:text-primary lg:mx-6">
-                    Masuk
+                    Event
                   </span>
                 </NavLink>
-              </li>
-              <li className="group">
-                <NavLink to={"/signup"}>
-                  <span className="text-base lg:font-semibold flex group-hover:text-primary lg:mx-6">
-                    Daftar
-                  </span>
-                </NavLink>
-              </li>
+              </li>   
+              {
+                auth 
+                  ? <li className="group">
+                      <span className="text-base lg:font-semibold flex group-hover:text-primary lg:mx-6" onClick={logout}>
+                        Keluar
+                      </span>
+                  </li>
+                  : <>
+                    <li className="group">
+                      <NavLink to={"/signin"}>
+                        <span className="text-base lg:font-semibold flex group-hover:text-primary lg:mx-6">
+                          Masuk
+                        </span>
+                      </NavLink>
+                    </li>   
+                    <li className="group">
+                      <NavLink to={"/signup"}>
+                        <span className="text-base lg:font-semibold flex group-hover:text-primary lg:mx-6">
+                          Daftar
+                        </span>
+                      </NavLink>
+                    </li>
+                  </>
+              }
             </ul>
           </div>
         </div>
       </nav>
-      <div className="h-[4rem] xl:h-[5.5rem]"></div>
+      <div className="h-[4rem] xl:h-[3.6rem]"></div>
     </>
   );
 };

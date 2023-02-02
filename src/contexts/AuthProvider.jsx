@@ -7,20 +7,20 @@ import React, { createContext, useEffect, useState} from "react";
 //   setPersist : (c: boolean) => void
 // }
 
-const AuthContext = createContext({auth: null, setAuth: ()=>{}, persist : false, setPersist(c) {}});
+const AuthContext = createContext({auth: null, setAuth: ()=>{}, accessToken : '', setAccessToken(c) {}});
 
 export const AuthProvider = ({children}) => {
     const [auth, setAuth] = useState(null);
-    const [persist, setPersist] = useState(localStorage.getItem('persist') === "true" || false);
+    const [accessToken, setAccessToken] = useState(localStorage.getItem('AT') || '');
 
     //TODO: move persist and set persist to custom hooks
     useEffect(
       ()=>{
-        localStorage.setItem('persist', persist + '')
-      }, [persist])
+        localStorage.setItem('AT', accessToken + '')
+      }, [accessToken])
         
     return (
-        <AuthContext.Provider value={{auth, setAuth, persist, setPersist}}>
+        <AuthContext.Provider value={{auth, setAuth, accessToken, setAccessToken}}>
           {children}
         </AuthContext.Provider>
     )

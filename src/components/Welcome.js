@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useContext} from "react";
 import Congklak from "../asset/img/congklak.png";
+import AuthContext from "../contexts/AuthProvider";
 
 const Welcome = () => {
+  const { auth } = useContext(AuthContext);
   return (
     <div className="full-no-navbar bg-primary">
       <section id="home" className="h-full">
