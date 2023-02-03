@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Kids from "../asset/img/Kids4.png";
 
 const DetailPermainan = () => {
+  const [showForum, setForum] = useState(false);
+  const handleOnClose = () => setForum(false);
+
   return (
     <div className="full-no-navbar bg-none">
       <div>
@@ -11,14 +14,15 @@ const DetailPermainan = () => {
         <div class="flex flex-warp">
           <div class="w-[100%]">
             <div class="rounded-xl shadow-lg overflow-hidden bg-white">
-              <div class="relative">
-                <a
-                  href="!#"
-                  target="_blank"
-                  class="absolute border-2 border-white right-0  w-11 h-11 ml-3 mr-3 flex justify-center items-center rounded-full bg-primary hover:border-primary text-white"
-                >
-                  <span>💬</span>
-                </a>
+              <div className="relative">
+                <div className="fixed bottom-11 right-11 w-10 h-10">
+                  <button
+                    onClick={() => setForum(true)}
+                    className="absolute border-2 border-black w-16 h-16 mr-3 flex justify-center items-center rounded-full bg-primary hover:border-primary hover:scale-95 transition duration-500 text-white"
+                  >
+                    <span className="text-2xl">💬</span>
+                  </button>
+                </div>
               </div>
 
               <div class="px-16 py-3">
@@ -33,7 +37,7 @@ const DetailPermainan = () => {
                 </p>
               </div>
               <div className="px-16">
-                <h4 className="text-2xl font-bold text-dark hover:text-dark text-2xl mb-5 truncate">
+                <h4 className="text-2xl font-bold text-dark hover:text-dark  mb-5 truncate">
                   Video
                 </h4>
                 <iframe
@@ -48,7 +52,7 @@ const DetailPermainan = () => {
                 ></iframe>
               </div>
               <div className="px-16">
-                <h5 className="text-2xl font-bold text-dark hover:text-dark text-2xl mb-5 truncate">
+                <h5 className="text-2xl font-bold text-dark hover:text-dark  mb-5 truncate">
                   {" "}
                   Tata Cara{" "}
                 </h5>
