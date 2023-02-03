@@ -1,20 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Kids from "../asset/img/Kids4.png";
 import DetailForum from "./DetailForum";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 const DetailPermainan = () => {
   const [showForum, setForum] = useState(false);
   const handleOnClose = () => setForum(false);
-  const [procedure, setProcedure] = useState([
-    "Lorem ipsum dolor sit amet consectetur. Eget morbi auctor a lobortis arcu aliquam. Enim nibh sed urna dictum venenatis lorem. Volutpat et at maecenas.", "Lorem ipsum dolor sit amet consectetur. Eget morbi auctora lobortis arcu aliquam. Enim nibh sed urna dictumvenenatis lorem. Volutpat et at maecenas.", "Lorem ipsum dolor sit amet consectetur. Eget morbi auctor a lobortis arcu aliquam. Enim nibh sed urna dictum venenatis lorem. Volutpat et at maecenas."
-  ]); // dummy data, TODO: read from db instead
+
+  const axios = useAxiosPrivate();
+  const { id } = useParams();
+
+  const [procedure, setProcedure] = useState([]);
+  const [data, setData] = useState({});
+
+  const getPage = async ()=>{
+    const {data} = await axios.get(`game/${id}`);
+    const {procedure, ...response} = data.data;
+    setData(response);
+    console.log(response);
+    setProcedure(...procedure.map(step=>JSON.parse(step)));
+  }
+
+  useEffect(()=>{
+    getPage();
+  }, [])
 
   return (
     <div className="full-no-navbar bg-none">
       <DetailForum onClose={handleOnClose} visible={showForum} />
       <div>
-        <img src={Kids} alt="Congklak" className="rounded-b-[7rem]" />
+        <img src={Kids} alt="Congklak" className="rounded-b-3xl w-full max-h-[60vh] object-cover" />
       </div>
       <div class="w-full py-8 px-12 rounded-xl shadow-lg overflow-hidden">
         <div class="flex flex-warp">
@@ -33,7 +49,7 @@ const DetailPermainan = () => {
 
               <div>
                 <h3 className="font-bold text-primary text-4xl mb-2 truncate">
-                  Permainan Dakon
+                  {data.title}
                 </h3>
                 <h4 className="text-xl flex flex-wrap font-semibold text-dark">
                   <span className="mr-3">
@@ -62,7 +78,7 @@ const DetailPermainan = () => {
                       />
                     </svg>
                   </span>
-                  Jawa Barat
+                  {data.origin_game}
                 </h4>
                 <p className="text-xl flex flex-wrap font-semibold text-dark mb-5">
                   <span className="mr-3">
@@ -80,7 +96,7 @@ const DetailPermainan = () => {
                       <path d="M17.29 8c-.148 0-.292.01-.434.03a.75.75 0 11-.212-1.484 4.53 4.53 0 013.38 8.097 6.69 6.69 0 013.956 6.107.75.75 0 01-1.5 0 5.193 5.193 0 00-3.696-4.972l-.534-.16v-1.676l.41-.209A3.03 3.03 0 0017.29 8z" />
                     </svg>
                   </span>
-                  2-4
+                  {data.max_player}
                 </p>
               </div>
               <div className="mt-12">
@@ -91,7 +107,7 @@ const DetailPermainan = () => {
                   className="rounded-xl mx-auto px-15 ml-25 w-full"
                   width="1024"
                   height="680"
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                  src={data.link_video}
                   title="Rick Astley - Never Gonna Give You Up (Official Music Video)"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -102,8 +118,8 @@ const DetailPermainan = () => {
               <div className="mt-12">
                 <h5 className="text-4xl font-bold text-dark mb-5">Tata Cara</h5>
                 {
-                  procedure.map((step, index)=><div className="text-xl font-normal">
-                    <div className="py-2 flex flex-wrap gap-x-3">
+                  procedure.map(({description}, index)=><div className="text-xl font-normal">
+                    <div className="py-2 flex flex-wrap gap-x-4">
                       <div className="relative w-4">
                         <div className="w-4 h-4 bg-primary rounded-full absolute top-2"></div>
                         {
@@ -111,11 +127,16 @@ const DetailPermainan = () => {
                         }
                       </div>
                       <p className="max-w-screen-lg text-justify tracking-wide">
-                        {step}
+                        {description}
                       </p>
                     </div>
                   </div>)
                 }
+              </div>
+
+              <div className="mt-12">
+                <h5 className="text-4xl font-bold text-dark mb-5">Deskripsi</h5>
+                <p className="text-xl text-gray-700">{data.description}</p>
               </div>
             </div>
           </div>
