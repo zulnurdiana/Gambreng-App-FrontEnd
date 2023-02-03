@@ -6,6 +6,9 @@ import { NavLink } from "react-router-dom";
 const DetailPermainan = () => {
   const [showForum, setForum] = useState(false);
   const handleOnClose = () => setForum(false);
+  const [procedure, setProcedure] = useState([
+    "Lorem ipsum dolor sit amet consectetur. Eget morbi auctor a lobortis arcu aliquam. Enim nibh sed urna dictum venenatis lorem. Volutpat et at maecenas.", "Lorem ipsum dolor sit amet consectetur. Eget morbi auctora lobortis arcu aliquam. Enim nibh sed urna dictumvenenatis lorem. Volutpat et at maecenas.", "Lorem ipsum dolor sit amet consectetur. Eget morbi auctor a lobortis arcu aliquam. Enim nibh sed urna dictum venenatis lorem. Volutpat et at maecenas."
+  ]); // dummy data, TODO: read from db instead
 
   return (
     <div className="full-no-navbar bg-none">
@@ -98,40 +101,21 @@ const DetailPermainan = () => {
 
               <div className="mt-12">
                 <h5 className="text-4xl font-bold text-dark mb-5">Tata Cara</h5>
-                <div className="text-xl font-normal">
-                  <div className="py-2 flex flex-wrap">
-                    <span className="mr-4">🟠</span>
-                    <p className="max-w-screen-lg text-justify tracking-wide">
-                      Lorem ipsum dolor sit amet consectetur. Eget morbi auctor
-                      a lobortis arcu aliquam. Enim nibh sed urna dictum
-                      venenatis lorem. Volutpat et at maecenas.
-                    </p>
-                  </div>
-                </div>
-                <div className="text-xl font-normal">
-                  <div className="py-2 flex flex-wrap">
-                    <span className="mr-4">🟠</span>
-                    <p className="max-w-screen-lg text-justify tracking-wide">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Ipsa eveniet sequi repellat, quos deleniti necessitatibus
-                      suscipit libero fugit quaerat? Eos quaerat quae iste
-                      necessitatibus impedit, quasi id asperiores officia
-                      corporis?
-                    </p>
-                  </div>
-                </div>
-                <div className="text-xl font-normal">
-                  <div className="py-2 flex flex-wrap">
-                    <span className="mr-4">🟠</span>
-                    <p className="max-w-screen-lg text-justify tracking-wide">
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Culpa necessitatibus repudiandae atque obcaecati similique
-                      voluptatem ipsa, repellendus at recusandae ducimus!
-                      Dolore, amet iure? Placeat officiis maiores molestiae
-                      natus magni repellendus.
-                    </p>
-                  </div>
-                </div>
+                {
+                  procedure.map((step, index)=><div className="text-xl font-normal">
+                    <div className="py-2 flex flex-wrap gap-x-3">
+                      <div className="relative w-4">
+                        <div className="w-4 h-4 bg-primary rounded-full absolute top-2"></div>
+                        {
+                          index !== procedure.length-1 && <div className="absolute top-2 left-1/2 transform -translate-x-1/2 h-[calc(100%+1rem)] border-l-2 border-primary"></div>
+                        }
+                      </div>
+                      <p className="max-w-screen-lg text-justify tracking-wide">
+                        {step}
+                      </p>
+                    </div>
+                  </div>)
+                }
               </div>
             </div>
           </div>
