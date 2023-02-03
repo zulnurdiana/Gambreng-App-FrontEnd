@@ -32,8 +32,10 @@ function App() {
           <Route path="/ubah-acara" element={<UbahAcara />} />
 
           {/* PERMAINAN */}
-          <Route path="/permainan" element={<Permainan />} />
-          <Route path="/detailsimulasi" element={<DetailSimulasi />} />
+          <Route path="/permainan">
+            <Route path=":id" element={<DetailSimulasi />}></Route>
+            <Route path="" index element={<Permainan />} />
+          </Route>
           <Route path="/tambah-simulasi" element={<TambahSimulasi />} />
           <Route path="/ubah-simulasi" element={<UbahSimulasi />} />
 

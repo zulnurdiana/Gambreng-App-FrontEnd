@@ -30,19 +30,24 @@ code {
 
 .react-paginate{
   @apply flex items-center gap-x-2;
-  li{
-    @apply bg-blue-300 w-7 h-7 grid place-content-center rounded-md font-bold text-white;
-    a{
-      @apply w-full h-full block;
-    }
-    &:last-child, &:first-child{
-      @apply bg-transparent text-blue-400;
-    }
-    &.selected{
-      @apply bg-blue-500;
-    }
-    &.disabled{
-      @apply text-gray-300 pointer-events-none;
-    }
-  }
+}
+
+.react-paginate li{
+  @apply bg-orange-300 w-7 h-7 grid place-content-center rounded-md font-bold text-white;
+}
+
+.react-paginate li a{
+  @apply w-full h-full block;
+}
+
+.react-paginate li:last-child, .react-paginate li:first-child{
+  @apply bg-transparent text-orange-400;
+}
+
+.react-paginate li.disabled{
+  @apply text-gray-300 pointer-events-none;
+}
+
+.react-paginate li.selected{
+  @apply bg-orange-500;
 }

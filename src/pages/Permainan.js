@@ -1,13 +1,13 @@
 import React from "react";
 import Layout from "./Layout";
-import ListEvent from "../components/ListPermainan";
+import ListPermainan from "../components/ListPermainan";
 
-const Event = () => {
+const Permainan = () => {
   return (
     <Layout>
-      <ListEvent />
+      <ListPermainan />
     </Layout>
   );
 };
 
-export default Event;
+export default Permainan;
