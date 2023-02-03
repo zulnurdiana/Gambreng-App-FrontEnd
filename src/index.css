@@ -27,3 +27,22 @@ code {
 .active {
   @apply text-primary;
 }
+
+.react-paginate{
+  @apply flex items-center gap-x-2;
+  li{
+    @apply bg-blue-300 w-7 h-7 grid place-content-center rounded-md font-bold text-white;
+    a{
+      @apply w-full h-full block;
+    }
+    &:last-child, &:first-child{
+      @apply bg-transparent text-blue-400;
+    }
+    &.selected{
+      @apply bg-blue-500;
+    }
+    &.disabled{
+      @apply text-gray-300 pointer-events-none;
+    }
+  }
+}
