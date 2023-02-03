@@ -68,7 +68,7 @@ const ListPermainan = () => {
                   <div className="flex flex-wrap">
                     <div className="relative xl:w-1/4">
                       <img
-                        src="https://source.unsplash.com/300x200?color"
+                        src={`https://gambreng.fajarbuana.my.id/image/${game.image}`}
                         alt="game"
                         className="w-full h-60"
                       />
