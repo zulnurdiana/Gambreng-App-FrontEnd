@@ -7,7 +7,7 @@ const ListPermainan = () => {
   const handleOnClose = () => setForum(false);
 
   return (
-    <div className="min-full-no-navbar pt-24">
+    <div className="min-full-no-navbar pt-16">
       <div className="container">
         <div className="relative">
           <div className="fixed bottom-11 right-8 w-10 h-10">

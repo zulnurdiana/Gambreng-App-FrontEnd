@@ -138,7 +138,22 @@ const FormTambahAcara = () => {
             to={"/event"}
             className="border-2 border-slate-400 w-14 h-14 mr-3 flex justify-center items-center rounded-full bg-primary hover:border-primary text-white"
           >
-            <span className="text-lg font-bold border-none">👨‍👩‍👧‍👦</span>
+            <span className="text-lg font-bold border-none">
+              <svg
+                width="30px"
+                height="30px"
+                viewBox="0 0 30 30"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g>
+                  <path fill="none" d="M0 0h30v30H0z" />
+                  <path
+                    d="M21.25 3.75h5a1.25 1.25 0 0 1 1.25 1.25v20a1.25 1.25 0 0 1 -1.25 1.25H3.75a1.25 1.25 0 0 1 -1.25 -1.25V5a1.25 1.25 0 0 1 1.25 -1.25h5V1.25h2.5v2.5h7.5V1.25h2.5v2.5zm3.75 7.5V6.25h-3.75v2.5h-2.5V6.25H11.25v2.5H8.75V6.25H5v5h20zm0 2.5H5v10h20v-10zM7.5 16.25h6.25v5H7.5v-5z"
+                    fill="#fff"
+                  />
+                </g>
+              </svg>
+            </span>
           </NavLink>
           <NavLink
             to={"/event"}

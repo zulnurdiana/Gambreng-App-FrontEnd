@@ -127,7 +127,21 @@ const FormTambahSimulasi = () => {
             to={"/event"}
             className="border-2 border-slate-400 w-14 h-14 mr-3 flex justify-center items-center rounded-full bg-primary hover:border-primary text-white"
           >
-            <span className="text-lg font-bold border-none">🔫</span>
+            <span className="text-lg font-bold border-none">
+              <svg
+                width="30px"
+                height="30px"
+                viewBox="0 0 30 30"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill="#fff"
+                  stroke="#000"
+                  stroke-width="2.5"
+                  d="M15 7.5L15 2.5M15 7.5C18.123 7.556 20.007 7.5 21.25 7.5C23.75 7.5 26.25 8.125 27.5 12.5C28.75 16.875 28.75 19.375 28.75 22.5C28.75 25.625 26.25 26.25 23.75 26.25C21.25 26.25 19.932 21.25 15 21.25C10.068 21.25 8.75 26.25 6.25 26.25C3.75 26.25 1.25 25.625 1.25 22.5C1.25 19.375 1.25 16.875 2.5 12.5C3.75 8.125 6.25 7.5 8.75 7.5C9.993 7.5 11.877 7.556 15 7.5L15 7.5L15 7.5ZM22.5 18.75C23.19 18.75 23.75 18.19 23.75 17.5C23.75 16.81 23.19 16.25 22.5 16.25C21.81 16.25 21.25 16.81 21.25 17.5C21.25 18.19 21.81 18.75 22.5 18.75ZM17.5 15C18.19 15 18.75 14.44 18.75 13.75C18.75 13.06 18.19 12.5 17.5 12.5C16.81 12.5 16.25 13.06 16.25 13.75C16.25 14.44 16.81 15 17.5 15ZM5 15L12.5 15M8.75 11.25L8.75 18.75"
+                />
+              </svg>
+            </span>
           </NavLink>
           <NavLink
             to={"/permainan"}

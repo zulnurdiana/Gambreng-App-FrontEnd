@@ -7,7 +7,7 @@ const Forum = ({ visible, onClose }) => {
       <div class="relative">
         <button
           onClick={onClose}
-          class="w-10 h-10  flex absolute -top-5 -right-5"
+          class="w-10 h-10  flex absolute hover:scale-95 -top-5 -right-5"
         >
           <span class="m-auto text-lg">❌</span>
         </button>
