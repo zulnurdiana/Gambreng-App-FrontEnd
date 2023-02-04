@@ -83,7 +83,7 @@ const FormTambahSimulasi = () => {
               <form action="" className="grid gap-y-5" onSubmit={handleSubmit}>
                 <h1 className="text-39364F text-center">
                   <span className="block font-bold mt-1 mb-2 text-primary lg:text-3xl">
-                    FORM SIMULASI PERMAINAN
+                    FORM {id?"MENGUBAH" : "MENGHAPUS"} SIMULASI PERMAINAN
                   </span>
                   <hr className={"w-full h-[3px]  my-1 bg-primary"} />
                 </h1>
@@ -207,7 +207,7 @@ const FormTambahSimulasi = () => {
                     html-for="nama-event"
                     className="font-medium text-39364F text-base"
                   >
-                    Gambar
+                    Gambar {id? '(kosongkan jika tidak ingin mengubah gambar)' : ''}
                   </label>
                   <label className="block">
                     <span className="sr-only">Choose game thumbnail</span>

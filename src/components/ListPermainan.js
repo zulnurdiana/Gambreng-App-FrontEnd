@@ -87,7 +87,7 @@ const ListPermainan = () => {
                             <img
                               src={`https://gambreng.fajarbuana.my.id/image/${game.image}`}
                               alt="game"
-                              className="w-full h-60 group-hover:scale-110 transition"
+                              className="w-full h-60 group-hover:scale-110 transition object-cover"
                             />
                           </div>
 

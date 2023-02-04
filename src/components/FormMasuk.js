@@ -35,11 +35,12 @@ const FormMasuk = () => {
       const decodedRes = jwtDecode(response.data.accessToken);
       const accessToken = response.data.accessToken;
       const resEmail = decodedRes.email;
+      const id = decodedRes.id;
       const isAdmin = decodedRes.role === "admin";
 
       setAlert("success", "Berhasil Masuk");
       setAccessToken(accessToken);
-      setAuth({ accessToken, email: resEmail, isAdmin });
+      setAuth({ accessToken, email: resEmail,id, isAdmin });
       setEmail("");
       setPassword("");
       navigate(from, { replace: true });
