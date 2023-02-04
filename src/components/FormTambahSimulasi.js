@@ -1,155 +1,240 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 const FormTambahSimulasi = () => {
+  const axios = useAxiosPrivate();
+  const navigate = useNavigate();
+  const [data, setData] = useState({
+    title: "",
+    description: "",
+    image: null,
+    max_player: "",
+    link_video: "",
+    origin_game: "",
+  });
+  const [procedure, setProcedure] = useState([]); 
+
+  const addProcedure = () => {
+    setProcedure([...procedure, {step: Date.now(), description:""}]);
+  }
+
+  const handleProcedureChange = (e, index) => {
+    const newProcedure = [...procedure];
+    newProcedure[index].description = e.target.value;
+    setProcedure(newProcedure);
+  }
+
+  const removeProcedure = (index) => {
+    const newProcedure = [...procedure];
+    newProcedure.splice(index, 1);
+    setProcedure(newProcedure);
+  }
+
+  const handleOnChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(data);
+    const formData = new FormData();
+    formData.append("title", data.title);
+    formData.append("description", data.description);
+    formData.append("image", data.image);
+    formData.append("link_video", data.link_video);
+    formData.append("max_player", data.max_player);
+    formData.append("origin_game", data.origin_game);
+    formData.append("procedure[]", "[" + procedure.map((step,index)=>{step.step=index;return JSON.stringify(step)})+ "]");
+    const {data : response} = await axios.post("game", formData, {headers: {"Content-Type": "multipart/form-data",}});
+    console.log(response);
+    navigate("/permainan");
+  }
+
+  // const handleSubmit = async (e) => { 
+  //   e.preventDefault();
+  //   const {data : response} = await axios.post("game", {
+  //     ...data,
+  //     procedure: procedure.map((step,index)=>{step.step=index;return JSON.stringify(step)})
+  //   });
+  //   console.log(response);
+  //   navigate("/permainan");
+  // }
+  
   return (
     <div className="min-full-no-navbar pt-20">
-      <div class="container">
-        <div class="xl:w-3/5 mx-auto">
-          <div class="mb-20 rounded-xl shadow-xl content-around border border-primary">
-            <div class="px-10 py-10 justify-center">
-              <h1 class="text-39364F text-center">
-                <span class="block font-bold mt-1 mb-2 text-primary lg:text-3xl">
-                  FORM TAMBAH SIMULASI PERMAINAN
-                </span>
-                <hr className={"w-full h-[3px]  my-1 bg-primary"} />
-              </h1>
-
-              <div className="w-full mb-5 px-4 py-7">
-                <label
-                  html-for="nama-permainan"
-                  className="font-medium text-39364F text-base"
-                >
-                  Nama Permainan
-                </label>
-                <input
-                  placeholder="game name"
-                  id=""
-                  type="text"
-                  className="p-2 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"
-                />
-              </div>
-              <div className="flex">
-                <div className="w-1/3 mb-5 px-4">
+      <div className="container">
+        <div className="xl:w-3/5 mx-auto">
+          <div className="mb-20 rounded-xl shadow-xl content-around border border-primary">
+            <div className="px-10 py-10">
+              <form action="" className="grid gap-y-5" onSubmit={handleSubmit}>
+                <h1 className="text-39364F text-center">
+                  <span className="block font-bold mt-1 mb-2 text-primary lg:text-3xl">
+                    FORM TAMBAH SIMULASI PERMAINAN
+                  </span>
+                  <hr className={"w-full h-[3px]  my-1 bg-primary"} />
+                </h1>
+                <div className="w-full px-4">
                   <label
-                    html-for="tanggal-acara"
+                    htmlFor="nama-permainan"
                     className="font-medium text-39364F text-base"
                   >
-                    Asal Daerah
-                  </label>
-                  <select className="p-2 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold">
-                    <option></option>
-                  </select>
-                </div>
-                <div className="w-1/3 mb-5 px-4">
-                  <label
-                    html-for="provinsi-acara"
-                    className="font-medium text-39364F text-base"
-                  >
-                    Jumlah pemain
+                    Nama Permainan
                   </label>
                   <input
-                    placeholder="1-3"
-                    id="cp-event"
+                    name="title"
+                    onChange={handleOnChange}
+                    value={data.title}
+                    placeholder="Congklak"
+                    id="nama-permainan"
                     type="text"
                     className="p-2 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"
                   />
                 </div>
-              </div>
-              <div className="w-full mb-5 px-4">
-                <label
-                  html-for="link-event"
-                  className="font-medium text-39364F text-base"
-                >
-                  Link Video Permainan
-                </label>
-                <input
-                  placeholder="https://.."
-                  id="link-event"
-                  type="url"
-                  className="p-2 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"
-                />
-              </div>
-              <div className="w-full mb-5 px-4">
-                <label
-                  html-for="cp-event"
-                  className="font-medium text-39364F text-base"
-                >
-                  Deskripsi
-                </label>
-                <textarea
-                  id="about-event"
-                  className="p-2 h-20 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"
-                />
-              </div>
-              <div className="w-full mb-5 px-4">
-                <label
-                  html-for="cp-event"
-                  className="font-medium text-39364F text-base"
-                >
-                  Tata Cara
-                </label>
-                <textarea
-                  id="about-event"
-                  className="p-2 h-20 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"
-                />
-              </div>
-              <div className="w-full mb-5 px-4">
-                <label
-                  html-for="nama-event"
-                  className="font-medium text-39364F text-base"
-                >
-                  Attachments
-                </label>
-                <label class="block">
-                  <span class="sr-only">Choose profile photo</span>
+                <div className="grid grid-cols-2">
+                  <div className="px-4">
+                    <label
+                      htmlFor="origin_game"
+                      className="font-medium text-39364F text-base"
+                    >
+                      Asal Daerah
+                    </label>
+                    <input
+                      placeholder="Jawa Timur"
+                      id="origin_game"
+                      name="origin_game"
+                      onChange={handleOnChange}
+                      value={data.origin_game}
+                      type="text"
+                      className="p-2 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"
+                    />
+                  </div>
+                  <div className="px-4">
+                    <label
+                      className="font-medium text-39364F text-base"
+                      htmlFor="max_player"
+                    >
+                      Jumlah pemain
+                    </label>
+                    <input
+                      placeholder="2-4"
+                      id="max_player"
+                      name="max_player"
+                      onChange={handleOnChange}
+                      value={data.max_player}
+                      type="text"
+                      className="p-2 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"
+                    />
+                  </div>
+                </div>
+                <div className="w-full px-4">
+                  <label
+                    htmlFor="link_video"
+                    className="font-medium text-39364F text-base"
+                  >
+                    Link Video Permainan
+                  </label>
                   <input
-                    type="file"
-                    class="block w-full text-sm text-slate-500
-                    file:mr-4 file:py-2 file:px-4
-                    file:rounded-full file:border-0
-                    file:text-sm file:font-semibold
-                    file:bg-violet-50 file:text-39364F
-                    hover:file:text-primary
-                    "
+                    placeholder="https://.."
+                    id="link_video"
+                    type="url"
+                    name="link_video"
+                    onChange={handleOnChange}
+                    value={data.link_video}
+                    className="p-2 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"
                   />
-                </label>
-              </div>
-              <button className="bg-primary hover:opacity-80 hover:shadow-lg transition duration-500 w-full text-white font-bold py-2 px-4 rounded">
+                </div>
+                <div className="w-full px-4">
+                  <label
+                    htmlFor="description"
+                    className="font-medium text-39364F text-base"
+                  >
+                    Deskripsi
+                  </label>
+                  <textarea
+                    id="description"
+                    name="description"
+                    onChange={handleOnChange}
+                    value={data.description}
+                    className="p-2 h-20 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"
+                  />
+                </div>
+                <div className="w-full px-4">
+                  <label
+                    className="font-medium text-39364F text-base"
+                  >
+                    Tata Cara
+                  </label>
+                  <div className="flex flex-col gap-y-3">
+                    {
+                      procedure.map((step, index) => {
+                        return (
+                          <div className="group relative" key={step.step}>
+                            <input
+                              placeholder={`Langkah ke-${index+1}`}
+                              className="p-2 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"
+                              value={step.description}
+                              onChange={(e) => handleProcedureChange(e, index)}
+                            />
+                            <div className="absolute top-1/2 transform -translate-y-1/2 right-2 text-lg text-red-500" onClick={() => removeProcedure(index)}>
+                              <i className="fa-solid fa-circle-minus"></i>
+                            </div>
+                          </div>
+                        )
+                      })
+                    }
+                    <div onClick={addProcedure} className="flex items-center gap-x-2 text-lg border border-gray-700 rounded-lg px-2 hover:text-white hover:border-primary hover:bg-primary cursor-pointer">
+                      <i className="fa-solid fa-circle-plus"></i>
+                      <span>Tambah langkah</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full px-4">
+                  <label
+                    html-for="nama-event"
+                    className="font-medium text-39364F text-base"
+                  >
+                    Gambar
+                  </label>
+                  <label className="block">
+                    <span className="sr-only">Choose game thumbnail</span>
+                    <input
+                      type="file"
+                      name="image"
+                      accept="image/*"
+                      onChange={(event)=>{setData({...data, image: event.target.files[0]})}}
+                      className="block w-full text-sm text-slate-500
+                      file:mr-4 file:py-2 file:px-4
+                      file:rounded-full file:border-0
+                      file:text-sm file:font-semibold
+                      file:bg-violet-50 file:text-39364F
+                      hover:file:text-primary
+                      "
+                    />
+                  </label>
+                </div>
+                <button className="bg-primary hover:opacity-80 hover:shadow-lg transition duration-500 w-full text-white font-bold py-2 px-4 rounded">
                 TAMBAH SIMULASI
-              </button>
+                </button>
+              </form>
             </div>
           </div>
         </div>
 
-        <div className="mb-12 flex items-center">
-          <NavLink
-            to={"/event"}
-            className="border-2 border-slate-400 w-14 h-14 mr-3 flex justify-center items-center rounded-full bg-primary hover:border-primary text-white"
-          >
-            <span className="text-lg font-bold border-none">
-              <svg
-                width="30px"
-                height="30px"
-                viewBox="0 0 30 30"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill="#fff"
-                  stroke="#000"
-                  stroke-width="2.5"
-                  d="M15 7.5L15 2.5M15 7.5C18.123 7.556 20.007 7.5 21.25 7.5C23.75 7.5 26.25 8.125 27.5 12.5C28.75 16.875 28.75 19.375 28.75 22.5C28.75 25.625 26.25 26.25 23.75 26.25C21.25 26.25 19.932 21.25 15 21.25C10.068 21.25 8.75 26.25 6.25 26.25C3.75 26.25 1.25 25.625 1.25 22.5C1.25 19.375 1.25 16.875 2.5 12.5C3.75 8.125 6.25 7.5 8.75 7.5C9.993 7.5 11.877 7.556 15 7.5L15 7.5L15 7.5ZM22.5 18.75C23.19 18.75 23.75 18.19 23.75 17.5C23.75 16.81 23.19 16.25 22.5 16.25C21.81 16.25 21.25 16.81 21.25 17.5C21.25 18.19 21.81 18.75 22.5 18.75ZM17.5 15C18.19 15 18.75 14.44 18.75 13.75C18.75 13.06 18.19 12.5 17.5 12.5C16.81 12.5 16.25 13.06 16.25 13.75C16.25 14.44 16.81 15 17.5 15ZM5 15L12.5 15M8.75 11.25L8.75 18.75"
-                />
-              </svg>
-            </span>
-          </NavLink>
-          <NavLink
+        <NavLink
             to={"/permainan"}
-            className="font-normal tracking-wide underline decoration-primary text-primary lg:text-2xl"
+            className="mt-16 mb-6 flex items-center group"
           >
+          <div className="border-2 w-14 h-14 mr-3 flex justify-center items-center transition-colors rounded-full bg-white border-primary group-hover:bg-primary">
+            <i className="fa-solid fa-chevron-left text-primary group-hover:text-white text-xl transition-colors"></i>
+          </div>
+          <span className="font-normal tracking-wide group-hover:underline decoration-primary text-primary lg:text-2xl">
             Kembali ke permainan
-          </NavLink>
-        </div>
+          </span>
+        </NavLink>
       </div>
     </div>
   );

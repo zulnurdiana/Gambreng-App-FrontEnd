@@ -51,3 +51,39 @@ code {
 .react-paginate li.selected{
   @apply bg-orange-500;
 }
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoom {
+  0% {
+    transform: translate(-50%,-50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%,-50%) scale(1.02);
+  }
+  100% {
+    transform: translate(-50%,-50%) scale(1);
+  }
+}
+
+#welcome-img {
+  animation: zoom 5s ease-in-out infinite;
+}
+
+#join-bottom {
+  animation: move 4.5s ease-in-out infinite;
+}
+#join-top {
+  animation: move 4s ease-in-out infinite;
+  animation-delay: 1s;
+}
