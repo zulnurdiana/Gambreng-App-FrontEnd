@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Forum from "./Forum";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import LoadingSpinner from "./LoadingSpinner";
+import DetailForum from "./DetailForum";
 
 const MAX_DESCRIPTION_LENGTH = 100;
 
@@ -43,6 +43,7 @@ const ListPermainan = () => {
     <div className="min-full-no-navbar pt-16">
       <div className="container">
       <div className="relative">
+        {showForum && <DetailForum onClose={handleOnClose} />}
           <div className="fixed bottom-11 right-11 w-10 h-10">
             <button
               onClick={() => setForum(true)}
@@ -149,7 +150,6 @@ const ListPermainan = () => {
           previousLabel={<i className="fas fa-chevron-left" />}
           renderOnZeroPageCount={null}
         />
-        <Forum onClose={handleOnClose} visible={showForum} />
       </div>
     </div>
   );

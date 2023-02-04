@@ -7,11 +7,12 @@ const DetailForum = ({ permainanId,onClose }) => {
   const axios = useAxiosPrivate(); 
   const {auth} = useContext(AuthContext);
   const [message, setMessage] = useState('');
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   const msgContainerRef = React.useRef(null);
 
   const getData = async ()=>{
-    const {data : response} = await axios.get(`game-forum/${permainanId}`);
+    const {data : response} = await axios.get(permainanId ? `game-forum/${permainanId}` : 'global-message');
+    console.log(response.data)
     setData(response.data);
     console.log(response.data);
   }
@@ -26,13 +27,27 @@ const DetailForum = ({ permainanId,onClose }) => {
 
   const sendMessage = async (e)=>{
     e.preventDefault();
-    const {data : response} = await axios.post(`game-message`,{
-      gameForumId : data.id,
-      message : message
-    });
+    let msg = {
+      message : message,
+    }
+    if(permainanId)
+      msg['gameForumId'] = data.id;
+    
+    const {data : response} = await axios.post(permainanId ? `game-message` : 'global-message', msg);
     setMessage('');
     getData();
   }
+
+  const printMessages = (msg)=>(
+    <div key={msg.id} className={`flex flex-col w-11/12 px-4 py-2 rounded-md ${msg.users?.email == auth?.email ? 'self-end bg-primary text-white' : 'bg-white text-gray-900'}`}>
+      <div className="mt-0">
+        {msg.users?.email == auth?.email || <p className="text-primary text-sm font-extrabold">{msg.users?.email.split('@')[0]}</p>}
+        <p className="font-medium">
+          {msg.message}
+        </p>
+      </div>
+    </div>
+  )
 
   return (
     <div className="rounded-xl fixed top-10 h-[calc(99vh-5rem)] right-10 shadow-lg px-5 py-5 border-2 w-[30vw] border-primary  bg-gray-300 bg-opacity-75 backdrop-blur-sm max-w-md z-10
@@ -52,7 +67,7 @@ const DetailForum = ({ permainanId,onClose }) => {
       <div className="border-b border-primary">
         <h1 className="text-center">
           <span className="block font-bold mt-1 lg:text-4xl text-primary">
-            Forum {data.title}
+            Forum {data.title ? data.title : 'Global'}
           </span>
         </h1>
       </div>
@@ -60,17 +75,7 @@ const DetailForum = ({ permainanId,onClose }) => {
       <div className="grow my-4 overflow-hidden" ref={msgContainerRef}>
         <SimpleBar style={{ maxHeight: msgContainerRef.current?.offsetHeight }}>
           <div className="flex flex-col gap-y-2">
-            {
-            data.game_messages?.map((msg)=>(
-              <div key={msg.id} className={`flex flex-col w-11/12 px-4 py-2 rounded-md ${msg.users?.email == auth?.email ? 'self-end bg-primary text-white' : 'bg-white text-gray-900'}`}>
-                <div className="mt-0">
-                  {msg.users?.email == auth?.email || <p className="text-primary text-sm font-extrabold">{msg.users?.email.split('@')[0]}</p>}
-                  <p className="font-medium">
-                    {msg.message}
-                  </p>
-                </div>
-              </div>
-            ))}
+            { data.game_messages ? data.game_messages.map(printMessages) : data.map(printMessages)}
           </div>
         </SimpleBar>
       </div>
