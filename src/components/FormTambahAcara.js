@@ -10,7 +10,7 @@ const FormTambahAcara = () => {
             <div class="px-10 py-10 justify-center">
               <h1 class="text-39364F text-center">
                 <span class="block font-bold mt-1 mb-2  lg:text-4xl text-primary">
-                  FORM TAMBAH EVENT
+                  FORM EVENT
                 </span>
                 <hr className={"w-full h-[3px]  my-1 bg-primary"} />
               </h1>
@@ -128,7 +128,7 @@ const FormTambahAcara = () => {
                 </label>
               </div>
               <button className="bg-primary hover:opacity-80 hover:shadow-lg transition duration-500  w-full text-white font-bold py-2 px-4 rounded">
-                TAMBAH ACARA
+                SIMPAN
               </button>
             </div>
           </div>
