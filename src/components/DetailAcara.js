@@ -1,7 +1,23 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink, useParams } from "react-router-dom";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 const DetailAcara = () => {
+  const axios = useAxiosPrivate();
+  const { id } = useParams();
+
+  const [data, setData] = useState([]);
+
+  const getPage = async () => {
+    const { data } = await axios.get(`event/${id}`);
+    const { ...response } = data.data;
+    setData(response);
+  };
+
+  useEffect(() => {
+    getPage();
+  }, []);
+
   return (
     <div className="min-full-no-navbar pt-24">
       <div className="container">
@@ -13,10 +29,10 @@ const DetailAcara = () => {
               </span>
             </h1>
             <p className=" text-slate-400 my-2 font-medium leading-relaxed lg:text-base">
-              📌 UNIVERSITAS KOMPUTER INDONESIA
+              📌 {data.location}
             </p>
             <p className=" text-dark font-medium leading-relaxed lg:text-base">
-              📆 Senin, 10 Januari 2022, 12:00 (WIB)
+              <span>📆</span> {data.schedule}
             </p>
           </div>
           <div className="lg:w-1/2 flex justify-end">
@@ -43,12 +59,10 @@ const DetailAcara = () => {
             </h1>
 
             <p className="max-w-md text-justify mt-6 text-slate-400 font-medium leading-relaxed lg:text-base">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
-              rem vel aliquid beatae harum quae alias nulla officia unde ea
-              praesentium est, rerum esse illum!
+              {data.about}
             </p>
             <p className="max-w-md text-justify mt-6 text-dark font-medium leading-relaxed lg:text-xl">
-              <span className="text-white">📞</span> 08123456789
+              <span className="text-white">📞</span> {data.contact_person}
             </p>
           </div>
         </div>

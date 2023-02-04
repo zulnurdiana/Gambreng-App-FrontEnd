@@ -26,8 +26,11 @@ function App() {
           <Route path="/forgot-password" element={<LupaPassword />} />
 
           {/* EVENT */}
-          <Route path="/event" element={<Event />} />
-          <Route path="/detailevent" element={<DetailEvent />} />
+          <Route path="/event">
+            <Route path="" element={<Event />} />
+            <Route path=":id" element={<DetailEvent />} />
+          </Route>
+
           <Route path="/tambah-acara" element={<TambahAcara />} />
           <Route path="/ubah-acara" element={<UbahAcara />} />
 
