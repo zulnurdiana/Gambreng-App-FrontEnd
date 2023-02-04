@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const FormTambahSimulasi = () => {
   return (
@@ -115,16 +115,19 @@ const FormTambahSimulasi = () => {
                   />
                 </label>
               </div>
-              <button className="bg-primary hover:opacity-80 hover:shadow-lg transition duration-500 w-full text-white font-bold py-2 px-4 rounded">
-                TAMBAH SIMULASI
-              </button>
+              <Link
+                to="/tambah-forum">
+                <button className="bg-primary hover:opacity-80 hover:shadow-lg transition duration-500 w-full text-white font-bold py-2 px-4 rounded">
+                  TAMBAH SIMULASI
+                </button>
+              </Link>
             </div>
           </div>
         </div>
 
         <div className="mb-12 flex items-center">
           <NavLink
-            to={"/event"}
+            to={"/permainan"}
             className="border-2 border-slate-400 w-14 h-14 mr-3 flex justify-center items-center rounded-full bg-primary hover:border-primary text-white"
           >
             <span className="text-lg font-bold border-none">
