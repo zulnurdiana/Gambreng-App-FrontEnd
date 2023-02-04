@@ -32,6 +32,13 @@ const ListPermainan = () => {
     getPage();
   }, [page]);
 
+  const deleteGame = async (id) => {
+    if(!window.confirm("Apakah anda yakin ingin menghapus permainan ini?"))
+      return;
+    await axios.delete(`game/${id}`);
+    getPage();
+  };
+
   return (
     <div className="min-full-no-navbar pt-16">
       <div className="container">
@@ -72,7 +79,7 @@ const ListPermainan = () => {
             <div className="flex flex-wrap px-4">
               <div className="xl:w-full px-4">
                 {games.map((game) => (
-                  <>
+                  <div className="relative">
                     <Link to={`${game.id}`} key={game.id}>
                       <div className="rounded-xl border border-gray-400 hover:border-primary transition-shadow hover:shadow-lg overflow-hidden bg-white mb-10">
                         <div className="flex flex-wrap">
@@ -105,23 +112,25 @@ const ListPermainan = () => {
                                   ? "..."
                                   : "")}
                             </p>
-                            <Link
-                            to={`/hapus-simulasi/${game.id}`}>
-                              <button className="float-right bg-red-900 hover:opacity-80 hover:shadow-lg transition duration-500 mx-2 text-white font-bold py-1 px-4 rounded">
-                                <i className="fa fa-trash pr-2"></i> Hapus
-                              </button>
-                            </Link>
-                            <Link
-                              to={`/permainan/${game.id}/edit`}>
-                              <button className="float-right bg-primary hover:opacity-80 hover:shadow-lg transition duration-500 mx-2 text-white font-bold py-1 px-4 rounded">
-                                <i className="fa fa-edit pr-2"></i> Ubah
-                              </button>
-                            </Link>
                           </div>
                         </div>
                       </div>
                     </Link>
-                  </>
+                    <div className="absolute top-2 right-2 flex items-center gap-x-2">
+                      <Link
+                        to={`${game.id}/edit`}
+                        className="border-2 rounded-lg bg-white border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white flex items-center justify-center w-10 h-10"
+                      >
+                        <i className="fa fa-edit"></i>
+                      </Link>
+                      <button
+                        className="border-2 rounded-lg bg-white hover border-red-500 hover:bg-red-500 text-red-500 hover:text-white flex items-center justify-center w-10 h-10"
+                        onClick={() => deleteGame(game.id)}
+                      >
+                        <i className="fa fa-trash"></i>
+                      </button>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>

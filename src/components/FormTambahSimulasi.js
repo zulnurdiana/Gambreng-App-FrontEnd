@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 const FormTambahSimulasi = () => {
   const axios = useAxiosPrivate();
+  const { id } = useParams();
+
   const navigate = useNavigate();
   const [data, setData] = useState({
     title: "",
@@ -44,15 +46,33 @@ const FormTambahSimulasi = () => {
     const formData = new FormData();
     formData.append("title", data.title);
     formData.append("description", data.description);
-    formData.append("image", data.image);
     formData.append("link_video", data.link_video);
     formData.append("max_player", data.max_player);
     formData.append("origin_game", data.origin_game);
     formData.append("procedure[]", "[" + procedure.map((step,index)=>{step.step=index;return JSON.stringify(step)})+ "]");
-    const {data : response} = await axios.post("game", formData, {headers: {"Content-Type": "multipart/form-data",}});
-    console.log(response);
+    if(data.image)
+      formData.append("image", data.image);
+      
+    if(id)
+      await axios.put(`game/${id}`, formData, {headers: {"Content-Type": "multipart/form-data",}});
+    else 
+      await axios.post("game", formData, {headers: {"Content-Type": "multipart/form-data",}});
+
     navigate("/permainan");
   }
+
+  useEffect(() => {
+    if (!id)
+      return 
+    const fetchData = async () => {
+      const { data: response } = await axios.get(`game/${id}`);
+      const {procedure ,...data} = response.data;
+      setProcedure(...procedure.map(step=>JSON.parse(step)));
+      setData(data);
+    };
+    fetchData();
+  }, []);
+
   
   return (
     <div className="min-full-no-navbar pt-10">

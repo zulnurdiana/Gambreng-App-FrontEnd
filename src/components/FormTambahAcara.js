@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
@@ -61,8 +61,7 @@ const FormTambahAcara = () => {
     navigate("/event");
   };
 
-  // fetch data if id exist and set to state
-  React.useEffect(() => {
+  useEffect(() => {
     if (!id)
       return 
     const fetchData = async () => {
