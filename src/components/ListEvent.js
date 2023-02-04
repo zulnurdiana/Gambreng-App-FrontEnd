@@ -69,10 +69,10 @@ const ListEvent = () => {
                     <div className="relative">
                       <div>
                         <img
-                          // src={`https://gambreng.fajarbuana.my.id/image/${event.image}`}
-                          src={`https://source.unsplash.com/300x200?color`}
+                          src={`https://gambreng.fajarbuana.my.id/image/${event.image}`}
+                          // src={`https://source.unsplash.com/300x200?color`}
                           alt="event"
-                          className="w-full"
+                          className="w-full h-48"
                         />
                         <Link
                         to={`${event.id}/edit`}>
@@ -107,8 +107,9 @@ const ListEvent = () => {
             </div>
           </>
         )}
+
         <ReactPaginate
-          className="react-paginate mt-3 mb-12"
+          className="react-paginate my-8  justify-center"
           breakLabel="..."
           onPageChange={(e) => {
             handlePageClick(e.selected);
