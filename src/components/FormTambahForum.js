@@ -31,7 +31,7 @@ const FormTambahForum = () => {
         
         <div class="mb-12 flex items-center">
           <a
-            href="/event"
+            href="/permainan"
             target="_blank"
             className="inline"
             class="border-2 border-black w-14 h-14 mr-3 flex justify-center items-center rounded-full bg-primary hover:border-primary text-white"
