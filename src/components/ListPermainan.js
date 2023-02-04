@@ -19,7 +19,7 @@ const ListPermainan = () => {
 
   const getPage = async () => {
     setGames([]);
-    const { data: response } = await axios.get(`game?limit=2&page=${page + 1}`);
+    const { data: response } = await axios.get(`game?limit=5&page=${page + 1}`);
     setPageCount(response.data.totalGame.totalPage);
     setGames(response.data.game);
   };
@@ -84,7 +84,7 @@ const ListPermainan = () => {
                             />
                           </div>
 
-                          <div className="px-6 py-6 xl:w-1/2">
+                          <div className="px-6 py-6 xl:w-3/4">
                             <h3 className="font-bold text-dark text-3xl mb-2 truncate">
                               {game.title}
                             </h3>
@@ -105,6 +105,18 @@ const ListPermainan = () => {
                                   ? "..."
                                   : "")}
                             </p>
+                            <Link
+                            to={`/hapus-simulasi/${game.id}`}>
+                              <button className="float-right bg-red-900 hover:opacity-80 hover:shadow-lg transition duration-500 mx-2 text-white font-bold py-1 px-4 rounded">
+                                <i className="fa fa-trash pr-2"></i> Hapus
+                              </button>
+                            </Link>
+                            <Link
+                              to={`/permainan/${game.id}/edit`}>
+                              <button className="float-right bg-primary hover:opacity-80 hover:shadow-lg transition duration-500 mx-2 text-white font-bold py-1 px-4 rounded">
+                                <i className="fa fa-edit pr-2"></i> Ubah
+                              </button>
+                            </Link>
                           </div>
                         </div>
                       </div>
