@@ -72,7 +72,7 @@ const ListEvent = () => {
                           src={`https://gambreng.fajarbuana.my.id/image/${event.image}`}
                           // src={`https://source.unsplash.com/300x200?color`}
                           alt="event"
-                          className="w-full h-40"
+                          className="w-full h-48"
                         />
                         <a
                           href="!#"
@@ -101,8 +101,9 @@ const ListEvent = () => {
             </div>
           </>
         )}
+
         <ReactPaginate
-          className="react-paginate mt-3 mb-12"
+          className="react-paginate my-8  justify-center"
           breakLabel="..."
           onPageChange={(e) => {
             handlePageClick(e.selected);
