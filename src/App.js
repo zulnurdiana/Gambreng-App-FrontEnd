@@ -11,8 +11,6 @@ import RequireAuth from "./components/RequireAuth";
 import TambahAcara from "./pages/TambahAcara";
 import TambahSimulasi from "./pages/TambahSimulasi";
 import TambahForum from "./pages/TambahForum";
-import UbahAcara from "./pages/UbahAcara";
-import UbahSimulasi from "./pages/UbahSimulasi";
 import UbahForum from "./pages/UbahForum";
 
 function App() {
@@ -29,18 +27,17 @@ function App() {
           <Route path="/event">
             <Route path="" element={<Event />} />
             <Route path=":id" element={<DetailEvent />} />
+            <Route path=":id/edit" element={<TambahAcara />} />
           </Route>
-
           <Route path="/tambah-acara" element={<TambahAcara />} />
-          <Route path="/ubah-acara" element={<UbahAcara />} />
 
           {/* PERMAINAN */}
           <Route path="/permainan">
             <Route path=":id" element={<DetailSimulasi />}></Route>
             <Route path="" index element={<Permainan />} />
+            <Route path=":id/edit" element={<TambahSimulasi />} />
           </Route>
           <Route path="/tambah-simulasi" element={<TambahSimulasi />} />
-          <Route path="/ubah-simulasi" element={<UbahSimulasi />} />
 
           {/* FORUM */}
           <Route path="/tambah-forum" element={<TambahForum />} />
