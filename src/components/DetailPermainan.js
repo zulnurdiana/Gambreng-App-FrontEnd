@@ -143,7 +143,7 @@ const DetailPermainan = () => {
         </div>
         <div className="mt-16 mb-6 flex items-center">
           <NavLink
-            to={"/event"}
+            to={"/permainan"}
             className="border-2 border-slate-400 w-14 h-14 mr-3 flex justify-center items-center rounded-full bg-primary hover:border-primary text-white"
           >
             <span className="border-none">
