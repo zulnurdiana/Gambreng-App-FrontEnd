@@ -83,20 +83,34 @@ const ListPermainan = () => {
                         />
                       </div>
 
-                      <div className="px-6 py-6 xl:w-1/2">
-                        <h3 className="font-bold text-dark text-3xl mb-2 truncate">
+                      <div className="px-6 py-6 xl:w-3/4">
+                        <h3 className=" font-bold text-dark text-3xl mb-1 truncate">
                           {game.title}
                         </h3>
-                        <h4 className="font-normal text-primary text-2xl mb-2 truncate">
+                        <h4 className="float-none font-normal text-primary text-2xl mb-2 truncate">
                           {game.origin_game}
                         </h4>
-                        <p className="text-lg flex flex-wrap items-center gap-x-2 font-semibold text-dark mb-5">
+                        <p className="text-lg flex flex-wrap items-center gap-x-2 font-semibold text-dark mb-3">
                           <i className="fa-regular fa-user"></i>
                           <span>{game.max_player}</span>
                         </p>
                         <p className="text-lg font-normal text-slate-400 text-justify">
                           {game.description.slice(0,MAX_DESCRIPTION_LENGTH) + (game.description.length > MAX_DESCRIPTION_LENGTH ? '...' : '')}
                         </p>
+                        <Link
+                          to={`/hapus-simulasi/${game.id}`}>
+                          <button className="float-right bg-red-900 hover:opacity-80 hover:shadow-lg transition duration-500 mx-2 text-white font-bold py-1 px-4 rounded">
+                          <i className="fa fa-trash pr-2"></i> Hapus
+                          </button>
+                        </Link>
+                        <Link
+                          to={
+                            `/ubah-simulasi/${game.id}`
+                          }>
+                          <button className="float-right bg-primary hover:opacity-80 hover:shadow-lg transition duration-500 mx-2 text-white font-bold py-1 px-4 rounded">
+                          <i className="fa fa-edit pr-2"></i> Ubah
+                          </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
