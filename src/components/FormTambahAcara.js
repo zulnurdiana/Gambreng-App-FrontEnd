@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 const FormTambahAcara = () => {
   const axios = useAxiosPrivate();
+  const {id} = useParams();
   const navigate = useNavigate();
   const [data, setData] = useState({
     title: "",
@@ -28,23 +29,48 @@ const FormTambahAcara = () => {
     const formData = new FormData();
     formData.append("title", data.title);
     formData.append("schedule", data.schedule);
-    formData.append("image", data.image);
     formData.append("location", data.location);
     formData.append("about", data.about);
     formData.append("contact_person", data.contact_person);
     formData.append("link_map", data.link_map);
-    const { data: response } = await axios.post(
-      "event",
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
-    console.log(response);
+    if(data.image)
+      formData.append("image", data.image);
+      
+    if(id){
+      const { data: response } = await axios.put(
+        `event/${id}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+    } else {
+      const { data: response } = await axios.post(
+        "event",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+    }
+
     navigate("/event");
   };
+
+  // fetch data if id exist and set to state
+  React.useEffect(() => {
+    if (!id)
+      return 
+    const fetchData = async () => {
+      const { data: response } = await axios.get(`event/${id}`);
+      setData(response.data);
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className="min-full-no-navbar pt-20">
@@ -54,7 +80,7 @@ const FormTambahAcara = () => {
             <form class="px-10 py-10 flex flex-col gap-y-5" onSubmit={handleSubmit}>
               <h1 class="text-39364F text-center">
                 <span class="block font-bold mt-1 mb-2  lg:text-4xl text-primary">
-                  FORM EVENT
+                  FORM {id ? "MENGUBAH" : "MEMBUAT"} EVENT
                 </span>
                 <hr className={"w-full h-[3px]  my-1 bg-primary"} />
               </h1>
@@ -71,6 +97,7 @@ const FormTambahAcara = () => {
                   id="title"
                   name="title"
                   onChange={handleOnChange}
+                  value={data.title}
                   type="text"
                   className="p-2 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"
                 />
@@ -87,6 +114,7 @@ const FormTambahAcara = () => {
                     id="schedule"
                     name="schedule"
                     onChange={handleOnChange}
+                    value={data.schedule ? data.schedule.split("T")[0] : ""}
                     type="date"
                     className="p-2 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"
                   />
@@ -103,6 +131,7 @@ const FormTambahAcara = () => {
                     id="location"
                     name="location"
                     onChange={handleOnChange}
+                    value={data.location}
                     type="text"
                     className="p-2 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"
                   />
@@ -120,6 +149,7 @@ const FormTambahAcara = () => {
                   id="link_map"
                   name="link_map"
                   onChange={handleOnChange}
+                  value={data.link_map}
                   type="url"
                   className="p-2 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"
                 />
@@ -135,6 +165,7 @@ const FormTambahAcara = () => {
                   id="about"
                   name="about"
                   onChange={handleOnChange}
+                  value={data.about}
                   className="p-2 h-20 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"
                 />
               </div>
@@ -150,6 +181,7 @@ const FormTambahAcara = () => {
                   id="contact_person"
                   name="contact_person"
                   onChange={handleOnChange}
+                  value={data.contact_person}
                   type="number"
                   className="p-2 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"
                 />
@@ -159,7 +191,7 @@ const FormTambahAcara = () => {
                   htmlFor="image"
                   className="font-medium text-39364F text-base"
                 >
-                  Gambar
+                  Gambar {id ? " (kosongkan jika tidak ingin mengubah gambar)" : ""}{""}
                 </label>
                 <label class="block">
                   <span class="sr-only">Pilih gambar</span>

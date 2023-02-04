@@ -25,6 +25,8 @@ const ListEvent = () => {
   };
 
   const deleteEvent = async (id) => {
+    if(!window.confirm("Apakah anda yakin ingin menghapus acara ini?"))
+      return;
     await axios.delete(`event/${id}`);
     getPage();
   };
