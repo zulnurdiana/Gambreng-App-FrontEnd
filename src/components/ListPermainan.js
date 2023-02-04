@@ -116,7 +116,7 @@ const ListPermainan = () => {
                         </div>
                       </div>
                     </Link>
-                    <div className="absolute top-2 right-2 flex items-center gap-x-2">
+                    <div className="absolute top-2 right-2 flex items-center gap-x-2 z-[1]">
                       <Link
                         to={`${game.id}/edit`}
                         className="border-2 rounded-lg bg-white border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white flex items-center justify-center w-10 h-10"
