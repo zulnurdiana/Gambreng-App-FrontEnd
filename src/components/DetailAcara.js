@@ -37,7 +37,7 @@ const DetailAcara = () => {
           </div>
           <div className="lg:w-1/2 flex justify-end">
             <img
-              src="https://source.unsplash.com/300x200?color"
+              src={`https://gambreng.fajarbuana.my.id/image/${data.image}`}
               alt="game"
               className="w-3/5 rounded-lg"
             />
@@ -46,7 +46,7 @@ const DetailAcara = () => {
         <div className="mb-20 flex flex-wrap rounded-xl shadow-md">
           <div className="lg:w-1/3 flex justify-start">
             <img
-              src="https://source.unsplash.com/300x200?color"
+              src={`https://gambreng.fajarbuana.my.id/image/${data.image}`}
               alt="game"
               className="w-full rounded-lg"
             />

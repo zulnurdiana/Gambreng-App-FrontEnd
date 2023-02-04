@@ -69,10 +69,10 @@ const ListEvent = () => {
                     <div className="relative">
                       <div>
                         <img
-                          // src={`https://gambreng.fajarbuana.my.id/image/${event.image}`}
-                          src={`https://source.unsplash.com/300x200?color`}
+                          src={`https://gambreng.fajarbuana.my.id/image/${event.image}`}
+                          // src={`https://source.unsplash.com/300x200?color`}
                           alt="event"
-                          className="w-full"
+                          className="w-full h-40"
                         />
                         <a
                           href="!#"
