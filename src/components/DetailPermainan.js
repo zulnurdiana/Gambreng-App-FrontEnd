@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Kids from "../asset/img/Kids4.png";
 import DetailForum from "./DetailForum";
-import { NavLink, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 const DetailPermainan = () => {
@@ -108,7 +108,6 @@ const DetailPermainan = () => {
                   width="1024"
                   height="680"
                   src={data.link_video}
-                  title="Rick Astley - Never Gonna Give You Up (Official Music Video)"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowfullscreen
@@ -142,7 +141,7 @@ const DetailPermainan = () => {
           </div>
         </div>
         
-        <NavLink
+        <Link
             to={"/permainan"}
             className="mt-16 mb-6 flex items-center group"
           >
@@ -152,7 +151,7 @@ const DetailPermainan = () => {
           <span className="font-normal tracking-wide group-hover:underline decoration-primary text-primary lg:text-2xl">
             Kembali ke permainan
           </span>
-        </NavLink>
+        </Link>
         </div>
     </div>
   );

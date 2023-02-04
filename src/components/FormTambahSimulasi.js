@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 const FormTambahSimulasi = () => {
@@ -53,16 +53,6 @@ const FormTambahSimulasi = () => {
     console.log(response);
     navigate("/permainan");
   }
-
-  // const handleSubmit = async (e) => { 
-  //   e.preventDefault();
-  //   const {data : response} = await axios.post("game", {
-  //     ...data,
-  //     procedure: procedure.map((step,index)=>{step.step=index;return JSON.stringify(step)})
-  //   });
-  //   console.log(response);
-  //   navigate("/permainan");
-  // }
   
   return (
     <div className="min-full-no-navbar pt-20">
@@ -224,7 +214,7 @@ const FormTambahSimulasi = () => {
           </div>
         </div>
 
-        <NavLink
+        <Link
             to={"/permainan"}
             className="mt-16 mb-6 flex items-center group"
           >
@@ -234,7 +224,7 @@ const FormTambahSimulasi = () => {
           <span className="font-normal tracking-wide group-hover:underline decoration-primary text-primary lg:text-2xl">
             Kembali ke permainan
           </span>
-        </NavLink>
+        </Link>
       </div>
     </div>
   );
