@@ -55,15 +55,15 @@ const FormTambahSimulasi = () => {
   }
   
   return (
-    <div className="min-full-no-navbar pt-20">
+    <div className="min-full-no-navbar pt-10">
       <div className="container">
         <div className="xl:w-3/5 mx-auto">
-          <div className="mb-20 rounded-xl shadow-xl content-around border border-primary">
+          <div className="mb-5 rounded-xl shadow-xl content-around border border-primary">
             <div className="px-10 py-10">
               <form action="" className="grid gap-y-5" onSubmit={handleSubmit}>
                 <h1 className="text-39364F text-center">
                   <span className="block font-bold mt-1 mb-2 text-primary lg:text-3xl">
-                    FORM TAMBAH SIMULASI PERMAINAN
+                    FORM SIMULASI PERMAINAN
                   </span>
                   <hr className={"w-full h-[3px]  my-1 bg-primary"} />
                 </h1>
@@ -207,7 +207,7 @@ const FormTambahSimulasi = () => {
                   </label>
                 </div>
                 <button className="bg-primary hover:opacity-80 hover:shadow-lg transition duration-500 w-full text-white font-bold py-2 px-4 rounded">
-                TAMBAH SIMULASI
+                SIMPAN
                 </button>
               </form>
             </div>

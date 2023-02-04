@@ -74,13 +74,13 @@ const ListEvent = () => {
                           alt="event"
                           className="w-full h-48"
                         />
-                        <a
-                          href="!#"
-                          target="_blank"
-                          className="absolute -bottom-4 border-2 border-white right-0  w-10 h-10 mr-3 flex justify-center items-center rounded-full bg-primary hover:border-primary text-white"
-                        >
-                          <span>🤍</span>
-                        </a>
+                        <Link
+                        to={`${event.id}/edit`}>
+                          <button
+                            className="absolute -bottom-4 border-2 border-white right-0 w-20 h-10 mr-3 flex justify-center items-center rounded-full bg-primary hover:border-primary text-white">
+                            <i className="fa fa-edit mr-2"></i>Edit
+                          </button>
+                        </Link>
                       </div>
                     </div>
 
@@ -94,6 +94,12 @@ const ListEvent = () => {
                       <p className="text-lg font-normal text-slate-400 mb-6">
                         <span>📌</span> {event.location}
                       </p>
+                      <Link
+                      to={`/hapus-acara/${event.id}`}>
+                          <button className="justify-center bg-red-900 hover:opacity-80 hover:shadow-lg transition duration-500 mx-2 text-white font-bold py-1 px-4 rounded">
+                            <i className="fa fa-trash pr-2"></i> Hapus
+                          </button>
+                      </Link>
                     </div>
                   </div>
                 </Link>
