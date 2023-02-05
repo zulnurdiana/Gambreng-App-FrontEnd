@@ -50,7 +50,7 @@ const DetailAcara = () => {
             <img
               src={`https://gambreng.fajarbuana.my.id/image/${data.image}`}
               alt="game"
-              className="w-full rounded-lg h-56"
+              className="w-full rounded-lg h-full"
             />
           </div>
           <div className="px-6 py-2 lg:w-2/3 justify-center">
