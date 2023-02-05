@@ -7,13 +7,11 @@ const DetailAcara = () => {
   const { id } = useParams();
 
   const [data, setData] = useState([]);
-  const [tanggal, setTanggal] = useState("");
 
   const getPage = async () => {
     const { data } = await axios.get(`event/${id}`);
     const { ...response } = data.data;
     setData(response);
-    setTanggal(response.schedule);
   };
 
   useEffect(() => {
@@ -34,7 +32,7 @@ const DetailAcara = () => {
               📌 {data.location}
             </p>
             <p className=" text-dark font-medium leading-relaxed lg:text-xl">
-              <span>📆</span> {tanggal.slice(0, 10)}
+              <span>📆</span> {!data.schedule ? "" : data.schedule.split(0, 10)}
             </p>
           </div>
           <div className="lg:w-1/2 flex justify-end">
