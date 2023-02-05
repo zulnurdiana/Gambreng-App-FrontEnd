@@ -86,7 +86,7 @@ const ListPermainan = () => {
         ) : (
           <>
             <div className="flex flex-wrap px-4">
-              <div className="grid md:grid-cols-2 gap-x-3 lg:grid-cols-none px-4">
+              <div className="grid md:grid-cols-2 gap-x-3 lg:grid-cols-none ">
                 {games.map((game) => (
                   <div className="relative group">
                     <Link to={`${game.id}`} key={game.id}>
