@@ -38,9 +38,9 @@ const DetailPermainan = () => {
           className="rounded-b-3xl w-full max-h-[60vh] object-cover"
         />
       </div>
-      <div className="w-full py-8 px-12 rounded-xl shadow-lg overflow-hidden">
+      <div className="container py-8 rounded-xl overflow-hidden">
         <div className="flex flex-warp">
-          <div className="w-[100%]">
+          <div className="w-full">
             <div>
               <div className="relative">
                 <div className="fixed bottom-11 right-11 w-10 h-10">
@@ -124,21 +124,21 @@ const DetailPermainan = () => {
 
               <div className="mt-12">
                 <h5 className="text-4xl font-bold text-dark mb-5">Tata Cara</h5>
-                {procedure.map(({ description, step }, index) => (
-                  <div className="text-xl font-normal" key={step}>
-                    <div className="py-2 flex flex-wrap gap-x-4">
+                {
+                  procedure.map(({description,step}, index)=><div className="text-xl font-normal" key={step}>
+                    <div className="py-4 grid grid-cols-[1rem,1fr] gap-x-4">
                       <div className="relative w-4">
-                        <div className="w-4 h-4 bg-primary rounded-full absolute top-2"></div>
-                        {index !== procedure.length - 1 && (
-                          <div className="absolute top-2 left-1/2 transform -translate-x-1/2 h-[calc(100%+1rem)] border-l-2 border-primary"></div>
-                        )}
+                        <div className="w-4 h-4 bg-primary rounded-full absolute top-1"></div>
+                        {
+                          index !== procedure.length-1 && <div className="absolute top-1 left-1/2 transform -translate-x-1/2 h-[calc(100%+2rem)] border-l-2 border-primary"></div>
+                        }
                       </div>
                       <p className="max-w-screen-lg text-justify tracking-wide">
                         {description}
                       </p>
                     </div>
                   </div>
-                ))}
+                )}
               </div>
 
               <div className="mt-12">
@@ -156,7 +156,7 @@ const DetailPermainan = () => {
           <div className="border-2 w-14 h-14 mr-3 flex justify-center items-center transition-colors rounded-full bg-white border-primary group-hover:bg-primary">
             <i className="fa-solid fa-chevron-left text-primary group-hover:text-white text-xl transition-colors"></i>
           </div>
-          <span className="font-normal tracking-wide group-hover:underline decoration-primary text-primary lg:text-2xl">
+          <span className="font-normal tracking-wide group-hover:underline decoration-primary text-primary text-xl lg:text-2xl">
             Kembali ke permainan
           </span>
         </Link>

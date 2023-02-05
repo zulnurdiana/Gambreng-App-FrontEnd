@@ -50,7 +50,7 @@ const DetailForum = ({ permainanId,onClose }) => {
   )
 
   return (
-    <div className="rounded-xl fixed top-10 h-[calc(99vh-5rem)] right-10 shadow-lg px-5 py-5 border-2 w-[30vw] border-primary  bg-gray-300 bg-opacity-75 backdrop-blur-sm max-w-md z-10
+    <div className="rounded-xl fixed top-10 h-[calc(99vh-5rem)] right-5 md:right-10 shadow-lg px-5 py-5 border-2 w-[calc(100vw-2.5rem)] md:w-[70vw] lg:w-[50vw] xl:w-[30vw] border-primary  bg-gray-300 bg-opacity-75 backdrop-blur-sm max-w-md z-10
       flex flex-col justify-between
     ">
       <div className="relative">
@@ -81,16 +81,16 @@ const DetailForum = ({ permainanId,onClose }) => {
       </div>
 
       <div className="rounded-lg">
-        <form className="bg-white rounded-lg p-2" onSubmit={sendMessage}>
+        <form className="bg-white rounded-lg p-2 grid grid-cols-4 gap-x-2" onSubmit={sendMessage}>
           <input
-            className="w-[73%] p-2 rounded-lg  bg-slate-100  focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary  text-dark"
+            className="p-2 rounded-lg col-span-3 bg-slate-100  focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary  text-dark"
             type="text"
             placeholder="Type your message here..."
             name="message"
             value={message}
             onChange={(e)=>setMessage(e.target.value)}
           />
-          <button className="ml-3 font-bold text-white rounded-lg px-5 py-2 text-base  bg-primary hover:opacity-80 hover:shadow-lg transition duration-500">
+          <button className="font-bold text-white rounded-lg py-2 text-base  bg-primary hover:opacity-80 hover:shadow-lg transition duration-500">
             Send
           </button>
         </form>
