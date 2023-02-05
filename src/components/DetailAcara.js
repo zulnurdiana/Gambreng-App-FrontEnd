@@ -69,7 +69,7 @@ const DetailAcara = () => {
           </div>
         </div>
         <Link
-          to={"/permainan"}
+          to={"/event"}
           className="mt-16 mb-6 flex items-center group w-max"
         >
           <div className="border-2 w-14 h-14 mr-3 flex justify-center items-center transition-colors rounded-full bg-white border-primary group-hover:bg-primary">
