@@ -9,7 +9,7 @@ const DetailPermainan = () => {
   const [showForum, setForum] = useState(false);
   const handleOnClose = () => setForum(false);
   const navigate = useNavigate();
-  const {auth} = useContext(AuthContext);
+  const { auth } = useContext(AuthContext);
 
   const axios = useAxiosPrivate();
   const { id } = useParams();
@@ -17,22 +17,26 @@ const DetailPermainan = () => {
   const [procedure, setProcedure] = useState([]);
   const [data, setData] = useState({});
 
-  const getPage = async ()=>{
-    const {data} = await axios.get(`game/${id}`);
-    const {procedure, ...response} = data.data;
+  const getPage = async () => {
+    const { data } = await axios.get(`game/${id}`);
+    const { procedure, ...response } = data.data;
     setData(response);
-    setProcedure(...procedure.map(step=>JSON.parse(step)));
-  }
+    setProcedure(...procedure.map((step) => JSON.parse(step)));
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     getPage();
-  }, [])
+  }, []);
 
   return (
     <div className="full-no-navbar bg-none">
       {showForum && <DetailForum onClose={handleOnClose} permainanId={id} />}
       <div>
-        <img src={Kids} alt="Congklak" className="rounded-b-3xl w-full max-h-[60vh] object-cover" />
+        <img
+          src={Kids}
+          alt="Congklak"
+          className="rounded-b-3xl w-full max-h-[60vh] object-cover"
+        />
       </div>
       <div className="w-full py-8 px-12 rounded-xl shadow-lg overflow-hidden">
         <div className="flex flex-warp">
@@ -43,7 +47,7 @@ const DetailPermainan = () => {
                   <button
                     onClick={() => {
                       if (!auth) navigate("/signin");
-                      setForum(true)
+                      setForum(true);
                     }}
                     className="absolute border-2 border-black w-16 h-16 mr-3 flex justify-center items-center rounded-full bg-primary hover:border-primary hover:scale-95 transition duration-500 text-white"
                   >
@@ -120,21 +124,21 @@ const DetailPermainan = () => {
 
               <div className="mt-12">
                 <h5 className="text-4xl font-bold text-dark mb-5">Tata Cara</h5>
-                {
-                  procedure.map(({description,step}, index)=><div className="text-xl font-normal" key={step}>
+                {procedure.map(({ description, step }, index) => (
+                  <div className="text-xl font-normal" key={step}>
                     <div className="py-2 flex flex-wrap gap-x-4">
                       <div className="relative w-4">
                         <div className="w-4 h-4 bg-primary rounded-full absolute top-2"></div>
-                        {
-                          index !== procedure.length-1 && <div className="absolute top-2 left-1/2 transform -translate-x-1/2 h-[calc(100%+1rem)] border-l-2 border-primary"></div>
-                        }
+                        {index !== procedure.length - 1 && (
+                          <div className="absolute top-2 left-1/2 transform -translate-x-1/2 h-[calc(100%+1rem)] border-l-2 border-primary"></div>
+                        )}
                       </div>
                       <p className="max-w-screen-lg text-justify tracking-wide">
                         {description}
                       </p>
                     </div>
-                  </div>)
-                }
+                  </div>
+                ))}
               </div>
 
               <div className="mt-12">
@@ -144,11 +148,11 @@ const DetailPermainan = () => {
             </div>
           </div>
         </div>
-        
+
         <Link
-            to={"/permainan"}
-            className="mt-16 mb-6 flex items-center group w-max"
-          >
+          to={"/permainan"}
+          className="mt-16 mb-6 flex items-center group w-max"
+        >
           <div className="border-2 w-14 h-14 mr-3 flex justify-center items-center transition-colors rounded-full bg-white border-primary group-hover:bg-primary">
             <i className="fa-solid fa-chevron-left text-primary group-hover:text-white text-xl transition-colors"></i>
           </div>
@@ -156,7 +160,7 @@ const DetailPermainan = () => {
             Kembali ke permainan
           </span>
         </Link>
-        </div>
+      </div>
     </div>
   );
 };
