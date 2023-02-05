@@ -47,7 +47,7 @@ const ListPermainan = () => {
       <div className="container">
       <div className="relative">
         {showForum && <DetailForum onClose={handleOnClose} />}
-          <div className="fixed bottom-11 right-11 w-10 h-10">
+          <div className="fixed bottom-11 right-11 w-10 h-10 z-[2]">
             <button
               onClick={() =>{ 
                 if(!auth) navigate('/signin');
