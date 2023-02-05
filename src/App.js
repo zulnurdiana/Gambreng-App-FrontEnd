@@ -12,6 +12,7 @@ import TambahAcara from "./pages/TambahAcara";
 import TambahSimulasi from "./pages/TambahSimulasi";
 import TambahForum from "./pages/TambahForum";
 import UbahForum from "./pages/UbahForum";
+import VerificationPage from "./pages/verifikasi/VerificationPage";
 
 function App() {
   return (
@@ -21,13 +22,14 @@ function App() {
           <Route path="/" element={<Landingpage />} />
           <Route path="/signin" element={<Masuk />} />
           <Route path="/signup" element={<Daftar />} />
+          <Route path="/account/verify/:token/:userId" element={<VerificationPage />} />
           <Route path="/forgot-password" element={<LupaPassword />} />
 
           {/* EVENT */}
           <Route path="/event">
             <Route path="" element={<Event />} />
             <Route path=":id" element={<DetailEvent />} />
-            <Route element={<RequireAuth adminOnly/>}>
+            <Route element={<RequireAuth adminOnly />}>
               <Route path=":id/edit" element={<TambahAcara />} />
             </Route>
           </Route>
@@ -37,7 +39,7 @@ function App() {
           <Route path="/permainan">
             <Route path=":id" element={<DetailSimulasi />}></Route>
             <Route path="" index element={<Permainan />} />
-            <Route element={<RequireAuth adminOnly/>}>
+            <Route element={<RequireAuth adminOnly />}>
               <Route path=":id/edit" element={<TambahSimulasi />} />
             </Route>
           </Route>
@@ -45,7 +47,7 @@ function App() {
 
           {/* FORUM */}
 
-          <Route element={<RequireAuth adminOnly/>}>
+          <Route element={<RequireAuth adminOnly />}>
             <Route path="/tambah-forum" element={<TambahForum />} />
             <Route path="/ubah-forum" element={<UbahForum />} />
             <Route path="/tambah-acara" element={<TambahAcara />} />

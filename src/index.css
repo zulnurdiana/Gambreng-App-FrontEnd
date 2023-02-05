@@ -17,48 +17,53 @@ code {
 }
 
 .full-no-navbar {
-  @apply h-[calc(100vh-3.5rem)] lg:h-[calc(100vh-5.5rem)];
+  @apply h-[calc(100vh-3.5rem)] h-[calc(100vh-5.5em)];
 }
 
 .min-full-no-navbar {
-  @apply min-h-[calc(100vh-3.5rem)] lg:min-h-[calc(100vh-5.5em)];
+  @apply min-h-[calc(100vh-3.5rem)] min-h-[calc(100vh-5.5em)];
 }
 
 .active {
   @apply text-primary;
 }
 
-.react-paginate{
+.react-paginate {
   @apply flex items-center gap-x-2;
 }
 
-.react-paginate li{
+.react-paginate li {
   @apply bg-orange-300 w-7 h-7 grid place-content-center rounded-md font-bold text-white;
 }
 
-.react-paginate li a{
+.react-paginate li a {
   @apply w-full h-full block;
 }
 
-.react-paginate li:last-child, .react-paginate li:first-child{
+.react-paginate li:last-child,
+.react-paginate li:first-child {
   @apply bg-transparent text-orange-400;
 }
 
-.react-paginate li.disabled{
+.react-paginate li.disabled {
   @apply text-gray-300 pointer-events-none;
 }
 
-.react-paginate li.selected{
+.react-paginate li.selected {
   @apply bg-orange-500;
 }
+
+
 
 @keyframes move {
   0% {
     transform: translateX(0);
   }
+
   50% {
     transform: translateX(8px);
   }
+
   100% {
     transform: translateX(0);
   }
@@ -66,13 +71,15 @@ code {
 
 @keyframes zoom {
   0% {
-    transform: translate(-50%,-50%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
   }
+
   50% {
-    transform: translate(-50%,-50%) scale(1.02);
+    transform: translate(-50%, -50%) scale(1.02);
   }
+
   100% {
-    transform: translate(-50%,-50%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
@@ -83,7 +90,19 @@ code {
 #join-bottom {
   animation: move 4.5s ease-in-out infinite;
 }
+
 #join-top {
   animation: move 4s ease-in-out infinite;
   animation-delay: 1s;
+}
+
+
+@layer components {
+  .loading-spinner {
+    @apply w-[50px] h-[50px] border-[10px] border-solid border-primary-50 border-t-[10px] border-t-primary animate-spin rounded-full
+  }
+
+  .shadow-card {
+    @apply shadow-[0px_15px_30px_-9px_#E0E1E6]
+  }
 }
