@@ -83,7 +83,7 @@ const FormTambahSimulasi = () => {
               <form action="" className="grid gap-y-5" onSubmit={handleSubmit}>
                 <h1 className="text-39364F text-center">
                   <span className="block font-bold mt-1 mb-2 text-primary lg:text-3xl">
-                    FORM {id?"MENGUBAH" : "MENGHAPUS"} SIMULASI PERMAINAN
+                    FORM {id?"MENGUBAH" : "MEMBUAT"} SIMULASI PERMAINAN
                   </span>
                   <hr className={"w-full h-[3px]  my-1 bg-primary"} />
                 </h1>
