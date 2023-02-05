@@ -118,7 +118,7 @@ const Navbar = ({ children }) => {
           </div>
         </div>
       </nav>
-      <div className="h-[4rem] xl:h-[5.5rem]"></div>
+      <div className="h-[3.5rem] xl:h-[5.5rem]"></div>
     </>
   );
 };

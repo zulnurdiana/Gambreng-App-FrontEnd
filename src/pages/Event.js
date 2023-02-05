@@ -9,7 +9,6 @@ const Event = () => {
       <Layout>
         <ListEvent />
       </Layout>
-      <Footer/>
     </React.Fragment>
   );
 };
