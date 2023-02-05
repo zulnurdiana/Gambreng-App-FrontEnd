@@ -40,7 +40,7 @@ const FormMasuk = () => {
 
       setAlert("success", "Berhasil Masuk");
       setAccessToken(accessToken);
-      setAuth({ accessToken, email: resEmail,id, isAdmin });
+      setAuth({ accessToken, email: resEmail, id, isAdmin });
       setEmail("");
       setPassword("");
       navigate(from, { replace: true });
