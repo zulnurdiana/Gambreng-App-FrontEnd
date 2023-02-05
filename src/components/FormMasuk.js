@@ -59,10 +59,10 @@ const FormMasuk = () => {
   };
 
   return (
-    <div className="min-full-no-navbar pt-32">
-      <div className="container">
-        <div className="flex flex-wrap">
-          <div className="px-4 lg:w-1/2 justify-center">
+    <div className="flex min-full-no-navbar">
+      <div className="container grow">
+        <div className="grid gap-y-10 my-7 md:grid-cols-2 place-content-center h-full">
+          <div className="justify-center flex flex-col items-center">
             <h1 className="text-dark text-center">
               <span className="block font-bold mt-1  lg:text-4xl">
                 Selamat Datang !
@@ -71,13 +71,11 @@ const FormMasuk = () => {
             <p className=" max-w-sm mx-auto text-secondary text-center mt-3 font-medium leading-relaxed lg:text-sm">
               Ayo masuk dan bermain bersama kami untuk menemukan teman baru.
             </p>
-            <center>
-              <img src={fotologin} alt="foto login" className="mt-6 w-5/6" />
-            </center>
+            <img src={fotologin} alt="foto login" className="mt-6 w-5/6" />
           </div>
-          <div class="lg:w-1/2">
+          <div class="flex items-center justify-center">
             <form
-              className="ml-12 px-4 border py-12 rounded-lg shadow-lg lg:w-5/6"
+              className="px-4 border py-12 rounded-lg shadow-lg lg:w-5/6"
               onSubmit={handleSubmit}
             >
               <div class="w-full mb-6 px-4">

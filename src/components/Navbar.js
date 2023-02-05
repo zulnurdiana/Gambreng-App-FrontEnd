@@ -50,7 +50,7 @@ const Navbar = ({ children }) => {
               </div>
             </NavLink>
             <button
-              className="xl:hidden"
+              className="lg:hidden"
               type="button"
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
@@ -114,7 +114,7 @@ const Navbar = ({ children }) => {
           </div>
         </div>
       </nav>
-      <div className="h-[4rem] xl:h-[3.6rem]"></div>
+      <div className="h-[4rem] xl:h-[5.5rem]"></div>
     </>
   );
 };
