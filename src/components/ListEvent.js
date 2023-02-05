@@ -66,7 +66,7 @@ const ListEvent = () => {
           </>
         ) : (
           <>
-            <div className="grid xl:grid-cols-4 gap-x-5">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-4">
               {events.map((event) => (
                 <div className="relative w-full">
                   <Link

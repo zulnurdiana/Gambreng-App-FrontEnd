@@ -15,19 +15,20 @@ const Navbar = ({ children }) => {
 
   const navigate = useNavigate();
 
-  const {auth, setAuth} = useContext(AuthContext)
+  const { auth, setAuth } = useContext(AuthContext);
 
   useEffect(() => {
     setNavbarOpen(false);
   }, [isMobile]);
 
   const logout = () => {
-    axiosPrivate.post('/auth/signout', {}, {withCredentials: true})
-    .then((res) => {
-      setAuth(null);
-      navigate('/')
-    })
-  }
+    axiosPrivate
+      .post("/auth/signout", {}, { withCredentials: true })
+      .then((res) => {
+        setAuth(null);
+        navigate("/");
+      });
+  };
 
   return (
     <>
@@ -72,8 +73,8 @@ const Navbar = ({ children }) => {
             id="example-navbar-warning"
           >
             <ul className="block lg:flex text-dark">
-               <li className="group">
-               <NavLink to={"/permainan"}>
+              <li className="group">
+                <NavLink to={"/permainan"}>
                   <span className="text-base lg:font-semibold flex group-hover:text-primary lg:mx-6">
                     Mulai Bermain
                   </span>
@@ -85,31 +86,34 @@ const Navbar = ({ children }) => {
                     Event
                   </span>
                 </NavLink>
-              </li>   
-              {
-                auth 
-                  ? <li className="group">
-                      <span className="text-base lg:font-semibold flex group-hover:text-primary lg:mx-6" onClick={logout}>
-                        Keluar
+              </li>
+              {auth ? (
+                <li className="group">
+                  <span
+                    className="cursor-pointer text-base lg:font-semibold flex group-hover:text-primary lg:mx-6"
+                    onClick={logout}
+                  >
+                    Keluar
+                  </span>
+                </li>
+              ) : (
+                <>
+                  <li className="group">
+                    <NavLink to={"/signin"}>
+                      <span className="text-base lg:font-semibold flex group-hover:text-primary lg:mx-6">
+                        Masuk
                       </span>
+                    </NavLink>
                   </li>
-                  : <>
-                    <li className="group">
-                      <NavLink to={"/signin"}>
-                        <span className="text-base lg:font-semibold flex group-hover:text-primary lg:mx-6">
-                          Masuk
-                        </span>
-                      </NavLink>
-                    </li>   
-                    <li className="group">
-                      <NavLink to={"/signup"}>
-                        <span className="text-base lg:font-semibold flex group-hover:text-primary lg:mx-6">
-                          Daftar
-                        </span>
-                      </NavLink>
-                    </li>
-                  </>
-              }
+                  <li className="group">
+                    <NavLink to={"/signup"}>
+                      <span className="text-base lg:font-semibold flex group-hover:text-primary lg:mx-6">
+                        Daftar
+                      </span>
+                    </NavLink>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
