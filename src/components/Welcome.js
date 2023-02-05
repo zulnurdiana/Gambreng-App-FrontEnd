@@ -29,8 +29,8 @@ const Welcome = () => {
                   />
                   <span className="absolute top-1/2 transform left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white w-3/4 h-3/4 rounded-full">
                   </span>
-                  <span id="join-top" className="absolute translate top-[2%] left-[55%] text-white text-8xl lg:text-9xl font-bold opacity-20">JOIN</span>
-                  <span id="join-bottom" className="absolute translate bottom-[5%] right-1/2 text-white text-8xl lg:text-9xl font-bold opacity-20">JOIN</span>
+                  <span id="join-top" className="absolute translate top-[2%] left-[55%] text-white text-6xl md:text-8xl lg:text-9xl font-bold opacity-20">JOIN</span>
+                  <span id="join-bottom" className="absolute translate bottom-[5%] right-1/2 text-white text-6xl md:text-8xl lg:text-9xl font-bold opacity-20">JOIN</span>
                 </div>
               </div>
             </div>

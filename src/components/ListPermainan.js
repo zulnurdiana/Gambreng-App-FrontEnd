@@ -86,21 +86,21 @@ const ListPermainan = () => {
         ) : (
           <>
             <div className="flex flex-wrap px-4">
-              <div className="xl:w-full px-4">
+              <div className="grid md:grid-cols-2 lg:grid-cols-none px-4">
                 {games.map((game) => (
                   <div className="relative group">
                     <Link to={`${game.id}`} key={game.id}>
                       <div className="rounded-xl border border-gray-400 transition-shadow hover:shadow-lg overflow-hidden bg-white mb-10">
-                        <div className="flex flex-wrap">
-                          <div className="relative xl:w-1/4">
+                        <div className="grid grid-rows-[15rem,1fr] lg:grid-rows-none lg:grid-cols-4">
+                          <div className="relative ">
                             <img
                               src={`https://gambreng.fajarbuana.my.id/image/${game.image}`}
                               alt="game"
-                              className="w-full h-60 group-hover:scale-110 transition object-cover"
+                              className="w-full lg:h-60 group-hover:scale-110 transition object-cover"
                             />
                           </div>
 
-                          <div className="px-6 py-6 xl:w-3/4 bg-white relative z-[1]">
+                          <div className="px-6 lg:col-span-3 py-6 bg-white relative z-[1]">
                             <h3 className="font-bold text-dark text-3xl mb-2 truncate">
                               {game.title}
                             </h3>
