@@ -61,7 +61,7 @@ const FormMasuk = () => {
   return (
     <div className="flex min-full-no-navbar">
       <div className="container grow">
-        <div className="grid gap-y-10 my-7 md:grid-cols-2 place-content-center h-full">
+        <div className="grid gap-y-10 my-7 md:my-0 md:grid-cols-2 place-content-center h-full">
           <div className="justify-center flex flex-col items-center">
             <h1 className="text-dark text-center">
               <span className="block font-bold mt-1  lg:text-4xl">
@@ -121,7 +121,7 @@ const FormMasuk = () => {
               </div>
               <p className="text-center text-sm text-secondary font-semibold mt-6">
                 Don’t have an account yet?
-                <span className="font-bold text-primary"> Create one</span>
+                <Link to={"/signup"} className="font-bold text-primary"> Create one</Link>
               </p>
             </form>
           </div>
