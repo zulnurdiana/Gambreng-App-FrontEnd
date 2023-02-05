@@ -86,7 +86,7 @@ const ListPermainan = () => {
         ) : (
           <>
             <div className="flex flex-wrap px-4">
-              <div className="grid md:grid-cols-2 lg:grid-cols-none px-4">
+              <div className="grid md:grid-cols-2 gap-x-3 lg:grid-cols-none px-4">
                 {games.map((game) => (
                   <div className="relative group">
                     <Link to={`${game.id}`} key={game.id}>
@@ -96,7 +96,7 @@ const ListPermainan = () => {
                             <img
                               src={`https://gambreng.fajarbuana.my.id/image/${game.image}`}
                               alt="game"
-                              className="w-full lg:h-60 group-hover:scale-110 transition object-cover"
+                              className="min-h-full min-w-full lg:w-full lg:h-60 group-hover:scale-110 transition object-cover"
                             />
                           </div>
 
