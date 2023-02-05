@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import LoadingSpinner from "./LoadingSpinner";
 import DetailForum from "./DetailForum";
+import AuthContext from "../contexts/AuthProvider";
 
 const MAX_DESCRIPTION_LENGTH = 100;
 
 const ListPermainan = () => {
   const [showForum, setForum] = useState(false);
   const handleOnClose = () => setForum(false);
+  const navigate = useNavigate();
+  const {auth} = useContext(AuthContext); 
 
   const axios = useAxiosPrivate();
 
@@ -46,29 +49,34 @@ const ListPermainan = () => {
         {showForum && <DetailForum onClose={handleOnClose} />}
           <div className="fixed bottom-11 right-11 w-10 h-10">
             <button
-              onClick={() => setForum(true)}
+              onClick={() =>{ 
+                if(!auth) navigate('/signin');
+                setForum(true)
+              }}
               className="absolute border-2 border-black w-16 h-16 mr-3 flex justify-center items-center rounded-full bg-primary hover:border-primary hover:scale-95 transition duration-500 text-white"
             >
               <span className="text-2xl">💬</span>
             </button>
           </div>
         </div>
-        <Link
-          to={"/tambah-simulasi"}
-          className="ml-8 flex items-center w-[17%] font-bold text-white rounded-lg mb-8 px-5 py-2 text-base z-50 bg-primary hover:opacity-80 hover:shadow-lg transition duration-500"
-        >
-          <span className="fill-current mr-3">
-            <svg
-              role="img"
-              width="20"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M18 13.496h-4.501v4.484h-3v-4.484H6v-2.99h4.5V6.021h3.001v4.485H18v2.99zM21 .041H3C1.348.043.008 1.379 0 3.031v17.94c.008 1.65 1.348 2.986 3 2.988h18c1.651-.002 2.991-1.338 3-2.988V3.031c-.009-1.652-1.348-2.987-3-2.99z" />
-            </svg>
-          </span>
-          Tambah Simulasi
-        </Link>
+        {auth?.isAdmin &&
+          <Link
+            to={"/tambah-simulasi"}
+            className="ml-8 flex items-center w-[17%] font-bold text-white rounded-lg mb-8 px-5 py-2 text-base z-50 bg-primary hover:opacity-80 hover:shadow-lg transition duration-500"
+          >
+            <span className="fill-current mr-3">
+              <svg
+                role="img"
+                width="20"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M18 13.496h-4.501v4.484h-3v-4.484H6v-2.99h4.5V6.021h3.001v4.485H18v2.99zM21 .041H3C1.348.043.008 1.379 0 3.031v17.94c.008 1.65 1.348 2.986 3 2.988h18c1.651-.002 2.991-1.338 3-2.988V3.031c-.009-1.652-1.348-2.987-3-2.99z" />
+              </svg>
+            </span>
+            Tambah Simulasi
+          </Link>
+        }
         {games.length === 0 ? (
           <div className="min-full-no-navbar relative pt-16">
             <div className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
@@ -117,20 +125,22 @@ const ListPermainan = () => {
                         </div>
                       </div>
                     </Link>
-                    <div className="absolute top-2 right-2 flex items-center gap-x-2 z-[1]">
-                      <Link
-                        to={`${game.id}/edit`}
-                        className="border-2 rounded-lg bg-white border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white flex items-center justify-center w-10 h-10"
-                      >
-                        <i className="fa fa-edit"></i>
-                      </Link>
-                      <button
-                        className="border-2 rounded-lg bg-white hover border-red-500 hover:bg-red-500 text-red-500 hover:text-white flex items-center justify-center w-10 h-10"
-                        onClick={() => deleteGame(game.id)}
-                      >
-                        <i className="fa fa-trash"></i>
-                      </button>
-                    </div>
+                    {auth?.isAdmin &&
+                      <div className="absolute top-2 right-2 flex items-center gap-x-2 z-[1]">
+                        <Link
+                          to={`${game.id}/edit`}
+                          className="border-2 rounded-lg bg-white border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white flex items-center justify-center w-10 h-10"
+                        >
+                          <i className="fa fa-edit"></i>
+                        </Link>
+                        <button
+                          className="border-2 rounded-lg bg-white hover border-red-500 hover:bg-red-500 text-red-500 hover:text-white flex items-center justify-center w-10 h-10"
+                          onClick={() => deleteGame(game.id)}
+                        >
+                          <i className="fa fa-trash"></i>
+                        </button>
+                      </div>
+                    }
                   </div>
                 ))}
               </div>

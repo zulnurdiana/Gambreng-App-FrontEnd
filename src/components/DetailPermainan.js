@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Kids from "../asset/img/Kids4.png";
 import DetailForum from "./DetailForum";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import AuthContext from "../contexts/AuthProvider";
 
 const DetailPermainan = () => {
   const [showForum, setForum] = useState(false);
   const handleOnClose = () => setForum(false);
+  const navigate = useNavigate();
+  const {auth} = useContext(AuthContext);
 
   const axios = useAxiosPrivate();
   const { id } = useParams();
@@ -38,7 +41,10 @@ const DetailPermainan = () => {
               <div className="relative">
                 <div className="fixed bottom-11 right-11 w-10 h-10">
                   <button
-                    onClick={() => setForum(true)}
+                    onClick={() => {
+                      if (!auth) navigate("/signin");
+                      setForum(true)
+                    }}
                     className="absolute border-2 border-black w-16 h-16 mr-3 flex justify-center items-center rounded-full bg-primary hover:border-primary hover:scale-95 transition duration-500 text-white"
                   >
                     <span className="text-2xl">💬</span>

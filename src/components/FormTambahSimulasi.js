@@ -185,7 +185,7 @@ const FormTambahSimulasi = () => {
                           <div className="group relative" key={step.step}>
                             <input
                               placeholder={`Langkah ke-${index+1}`}
-                              className="p-2 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"
+                              className="p-2 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold pr-10"
                               value={step.description}
                               onChange={(e) => handleProcedureChange(e, index)}
                             />

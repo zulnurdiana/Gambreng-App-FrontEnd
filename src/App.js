@@ -27,7 +27,9 @@ function App() {
           <Route path="/event">
             <Route path="" element={<Event />} />
             <Route path=":id" element={<DetailEvent />} />
-            <Route path=":id/edit" element={<TambahAcara />} />
+            <Route element={<RequireAuth adminOnly/>}>
+              <Route path=":id/edit" element={<TambahAcara />} />
+            </Route>
           </Route>
           <Route path="/tambah-acara" element={<TambahAcara />} />
 
@@ -35,18 +37,17 @@ function App() {
           <Route path="/permainan">
             <Route path=":id" element={<DetailSimulasi />}></Route>
             <Route path="" index element={<Permainan />} />
-            <Route path=":id/edit" element={<TambahSimulasi />} />
+            <Route element={<RequireAuth adminOnly/>}>
+              <Route path=":id/edit" element={<TambahSimulasi />} />
+            </Route>
           </Route>
           <Route path="/tambah-simulasi" element={<TambahSimulasi />} />
 
           {/* FORUM */}
-          <Route path="/tambah-forum" element={<TambahForum />} />
-          <Route path="/ubah-forum" element={<UbahForum />} />
 
-          <Route element={<RequireAuth />}>
-            <Route path="/event" element={<Event />} />
-            <Route path="/permainan" element={<Permainan />} />
-            <Route path="/detailevent" element={<DetailEvent />} />
+          <Route element={<RequireAuth adminOnly/>}>
+            <Route path="/tambah-forum" element={<TambahForum />} />
+            <Route path="/ubah-forum" element={<UbahForum />} />
             <Route path="/tambah-acara" element={<TambahAcara />} />
             <Route path="/tambah-simulasi" element={<TambahSimulasi />} />
           </Route>

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import LoadingSpinner from "./LoadingSpinner";
+import AuthContext from "../contexts/AuthProvider";
 
 const ListEvent = () => {
   const axios = useAxiosPrivate();
@@ -10,6 +11,7 @@ const ListEvent = () => {
   const [pageCount, setPageCount] = useState(0);
   const [events, setEvents] = useState([]);
   const [page, setPage] = useState(0);
+  const {auth} = useContext(AuthContext);
 
   const getPage = async () => {
     setEvents([]);
@@ -38,7 +40,7 @@ const ListEvent = () => {
   return (
     <div className="min-full-no-navbar pt-16">
       <div className="container">
-        <Link
+        {auth?.isAdmin && <Link
           to={"/tambah-acara"}
           className="ml-8 flex items-center w-[15%] font-bold text-white rounded-lg mb-8 px-5 py-2 text-base z-50 bg-primary hover:opacity-80 hover:shadow-lg transition duration-500"
         >
@@ -53,7 +55,7 @@ const ListEvent = () => {
             </svg>
           </span>
           Tambah Event
-        </Link>
+        </Link>}
         {events.length === 0 ? (
           <>
             <div className="min-full-no-navbar relative pt-16">
@@ -100,20 +102,22 @@ const ListEvent = () => {
                       </p>
                     </div>
                   </Link>
-                  <div className="absolute bottom-2 right-2 flex items-center gap-x-2">
-                    <Link
-                      to={`${event.id}/edit`}
-                      className="border-2 rounded-lg bg-white border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white flex items-center justify-center w-10 h-10"
-                    >
-                      <i className="fa fa-edit"></i>
-                    </Link>
-                    <button
-                      className="border-2 rounded-lg bg-white hover border-red-500 hover:bg-red-500 text-red-500 hover:text-white flex items-center justify-center w-10 h-10"
-                      onClick={() => deleteEvent(event.id)}
-                    >
-                      <i className="fa fa-trash"></i>
-                    </button>
-                  </div>
+                  {auth?.isAdmin &&
+                    <div className="absolute bottom-2 right-2 flex items-center gap-x-2">
+                      <Link
+                        to={`${event.id}/edit`}
+                        className="border-2 rounded-lg bg-white border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white flex items-center justify-center w-10 h-10"
+                      >
+                        <i className="fa fa-edit"></i>
+                      </Link>
+                      <button
+                        className="border-2 rounded-lg bg-white hover border-red-500 hover:bg-red-500 text-red-500 hover:text-white flex items-center justify-center w-10 h-10"
+                        onClick={() => deleteEvent(event.id)}
+                      >
+                        <i className="fa fa-trash"></i>
+                      </button>
+                    </div>
+                  }
                 </div>
               ))}
             </div>
