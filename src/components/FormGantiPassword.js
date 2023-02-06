@@ -8,7 +8,6 @@ import axiosErrorToString from "../utils/axiosErrorToString";
 const FormGantiPassword = () => {
   const {token, userId} = useParams()
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -17,10 +16,9 @@ const FormGantiPassword = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("/auth/password/send", {
+      .post("/auth/password/verify", {
         token,
         userId,
-        email,
         password,
         confirmPassword
       })
@@ -53,18 +51,6 @@ const FormGantiPassword = () => {
               className="px-4 border py-12 rounded-lg shadow-lg lg:w-5/6"
               onSubmit={handleSubmit}
             >
-              <div className="w-full mb-5 px-4">
-                <label html-for="email" className="font-medium text-secondary text-base">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  className="p-2 bg-slate-100 w-full focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary rounded-lg text-dark font-bold"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
               <div className="w-full mb-5 px-4">
                 <label html-for="password" className="font-medium text-secondary text-base">
                   Password
