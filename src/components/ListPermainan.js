@@ -62,7 +62,7 @@ const ListPermainan = () => {
         {auth?.isAdmin && (
           <Link
             to={"/tambah-simulasi"}
-            className="lg:w-[15%] text-sm flex items-center w-[60%] px-7 py-2 font-bold text-white rounded-lg mb-8 lg:px-5 lg:py-2 md:text-base  bg-primary hover:opacity-80 hover:shadow-lg transition duration-500"
+            className="lg:w-[18%] ml-6 text-sm flex items-center w-[60%] px-7 py-2 font-bold text-white rounded-lg mb-8 lg:px-7 lg:py-2 md:text-base  bg-primary hover:opacity-80 hover:shadow-lg transition duration-500"
           >
             <span className="fill-current mr-3">
               <svg
