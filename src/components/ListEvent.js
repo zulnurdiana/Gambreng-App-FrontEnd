@@ -11,7 +11,7 @@ const ListEvent = () => {
   const [pageCount, setPageCount] = useState(0);
   const [events, setEvents] = useState([]);
   const [page, setPage] = useState(0);
-  const {auth} = useContext(AuthContext);
+  const { auth } = useContext(AuthContext);
 
   const getPage = async () => {
     setEvents([]);
@@ -27,8 +27,7 @@ const ListEvent = () => {
   };
 
   const deleteEvent = async (id) => {
-    if(!window.confirm("Apakah anda yakin ingin menghapus acara ini?"))
-      return;
+    if (!window.confirm("Apakah anda yakin ingin menghapus acara ini?")) return;
     await axios.delete(`event/${id}`);
     getPage();
   };
@@ -40,22 +39,24 @@ const ListEvent = () => {
   return (
     <div className="min-full-no-navbar pt-16">
       <div className="container">
-        {auth?.isAdmin && <Link
-          to={"/tambah-acara"}
-          className="ml-8 flex items-center w-[15%] font-bold text-white rounded-lg mb-8 px-5 py-2 text-base z-50 bg-primary hover:opacity-80 hover:shadow-lg transition duration-500"
-        >
-          <span className="fill-current mr-3">
-            <svg
-              role="img"
-              width="20"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M18 13.496h-4.501v4.484h-3v-4.484H6v-2.99h4.5V6.021h3.001v4.485H18v2.99zM21 .041H3C1.348.043.008 1.379 0 3.031v17.94c.008 1.65 1.348 2.986 3 2.988h18c1.651-.002 2.991-1.338 3-2.988V3.031c-.009-1.652-1.348-2.987-3-2.99z" />
-            </svg>
-          </span>
-          Tambah Event
-        </Link>}
+        {auth?.isAdmin && (
+          <Link
+            to={"/tambah-acara"}
+            className="lg:w-[15%] text-sm flex items-center w-[50%] px-5 py-2 font-bold text-white rounded-lg mb-8 lg:px-5 lg:py-2 md:text-base  bg-primary hover:opacity-80 hover:shadow-lg transition duration-500"
+          >
+            <span className="fill-current mr-3">
+              <svg
+                role="img"
+                width="20"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M18 13.496h-4.501v4.484h-3v-4.484H6v-2.99h4.5V6.021h3.001v4.485H18v2.99zM21 .041H3C1.348.043.008 1.379 0 3.031v17.94c.008 1.65 1.348 2.986 3 2.988h18c1.651-.002 2.991-1.338 3-2.988V3.031c-.009-1.652-1.348-2.987-3-2.99z" />
+              </svg>
+            </span>
+            Tambah Event
+          </Link>
+        )}
         {events.length === 0 ? (
           <>
             <div className="min-full-no-navbar relative pt-16">
@@ -66,60 +67,60 @@ const ListEvent = () => {
           </>
         ) : (
           <>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-4">
-              {events.map((event) => (
-                <div className="relative w-full">
-                  <Link
-                    to={`/event/${event.id}`}
-                    key={event.id}
-                    className="rounded-xl border border-slate-300 overflow-hidden bg-white block group hover:shadow-lg transition-all"
-                  >
-                    <div className="relative">
-                      <div>
-                        <img
-                          src={`https://gambreng.fajarbuana.my.id/image/${event.image}`}
-                          className="object-cover w-full h-48 transform transition-transform group-hover:scale-110"
-                          alt="event"
-                        />
+            <div class="">
+              <div className="flex flex-wrap justify-center md:justify-start gap-x-5 gap-y-4">
+                {events.map((event) => (
+                  <div className="relative  w-full lg:w-[23%]">
+                    <Link
+                      to={`/event/${event.id}`}
+                      key={event.id}
+                      className="rounded-xl border border-slate-300 overflow-hidden bg-white block group hover:shadow-lg transition-all"
+                    >
+                      <div className="relative">
+                        <div>
+                          <img
+                            src={`https://gambreng.fajarbuana.my.id/image/${event.image}`}
+                            className="object-cover w-full h-48 transform transition-transform group-hover:scale-110"
+                            alt="event"
+                          />
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="px-4 py-6 relative bg-white">
-                      <h3 className="font-bold text-dark text-2xl mb-5 truncate">
-                        {event.title}
-                      </h3>
-                      <p className="text-lg font-normal flex items-center gap-x-2 text-primary">
-                        <i className="fa-regular fa-clock"></i>
-                        <span>
-                          {event.schedule.slice(0, 10)}
-                        </span> 
-                      </p>
-                      <p className="text-lg font-normal text-slate-400 mb-6 flex items-center gap-x-2">
-                        <span className="w-4 justify-center flex">
-                          <i class="fa-solid fa-location-dot"></i> 
-                        </span>
-                        <span>{event.location}</span>
-                      </p>
-                    </div>
-                  </Link>
-                  {auth?.isAdmin &&
-                    <div className="absolute bottom-2 right-2 flex items-center gap-x-2">
-                      <Link
-                        to={`${event.id}/edit`}
-                        className="border-2 rounded-lg bg-white border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white flex items-center justify-center w-10 h-10"
-                      >
-                        <i className="fa fa-edit"></i>
-                      </Link>
-                      <button
-                        className="border-2 rounded-lg bg-white hover border-red-500 hover:bg-red-500 text-red-500 hover:text-white flex items-center justify-center w-10 h-10"
-                        onClick={() => deleteEvent(event.id)}
-                      >
-                        <i className="fa fa-trash"></i>
-                      </button>
-                    </div>
-                  }
-                </div>
-              ))}
+                      <div className="px-4 py-6 relative bg-white">
+                        <h3 className="font-bold text-dark text-2xl mb-5 truncate">
+                          {event.title}
+                        </h3>
+                        <p className="text-lg font-normal flex items-center gap-x-2 text-primary">
+                          <i className="fa-regular fa-clock"></i>
+                          <span>{event.schedule.slice(0, 10)}</span>
+                        </p>
+                        <p className="text-lg font-normal text-slate-400 mb-6 flex items-center gap-x-2">
+                          <span className="w-4 justify-center flex">
+                            <i class="fa-solid fa-location-dot"></i>
+                          </span>
+                          <span>{event.location}</span>
+                        </p>
+                      </div>
+                    </Link>
+                    {auth?.isAdmin && (
+                      <div className="absolute bottom-2 right-2 flex items-center gap-x-2">
+                        <Link
+                          to={`${event.id}/edit`}
+                          className="border-2 rounded-lg bg-white border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white flex items-center justify-center w-10 h-10"
+                        >
+                          <i className="fa fa-edit"></i>
+                        </Link>
+                        <button
+                          className="border-2 rounded-lg bg-white hover border-red-500 hover:bg-red-500 text-red-500 hover:text-white flex items-center justify-center w-10 h-10"
+                          onClick={() => deleteEvent(event.id)}
+                        >
+                          <i className="fa fa-trash"></i>
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
           </>
         )}

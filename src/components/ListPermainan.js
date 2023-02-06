@@ -12,7 +12,7 @@ const ListPermainan = () => {
   const [showForum, setForum] = useState(false);
   const handleOnClose = () => setForum(false);
   const navigate = useNavigate();
-  const {auth} = useContext(AuthContext); 
+  const { auth } = useContext(AuthContext);
 
   const axios = useAxiosPrivate();
 
@@ -36,7 +36,7 @@ const ListPermainan = () => {
   }, [page]);
 
   const deleteGame = async (id) => {
-    if(!window.confirm("Apakah anda yakin ingin menghapus permainan ini?"))
+    if (!window.confirm("Apakah anda yakin ingin menghapus permainan ini?"))
       return;
     await axios.delete(`game/${id}`);
     getPage();
@@ -45,13 +45,13 @@ const ListPermainan = () => {
   return (
     <div className="min-full-no-navbar pt-16">
       <div className="container">
-      <div className="relative">
-        {showForum && <DetailForum onClose={handleOnClose} />}
+        <div className="relative">
+          {showForum && <DetailForum onClose={handleOnClose} />}
           <div className="fixed bottom-11 right-11 w-10 h-10 z-[2]">
             <button
-              onClick={() =>{ 
-                if(!auth) navigate('/signin');
-                setForum(true)
+              onClick={() => {
+                if (!auth) navigate("/signin");
+                setForum(true);
               }}
               className="absolute border-2 border-black w-16 h-16 mr-3 flex justify-center items-center rounded-full bg-primary hover:border-primary hover:scale-95 transition duration-500 text-white"
             >
@@ -59,10 +59,10 @@ const ListPermainan = () => {
             </button>
           </div>
         </div>
-        {auth?.isAdmin &&
+        {auth?.isAdmin && (
           <Link
             to={"/tambah-simulasi"}
-            className="ml-8 flex items-center w-[17%] font-bold text-white rounded-lg mb-8 px-5 py-2 text-base z-50 bg-primary hover:opacity-80 hover:shadow-lg transition duration-500"
+            className="lg:w-[15%] text-sm flex items-center w-[60%] px-7 py-2 font-bold text-white rounded-lg mb-8 lg:px-5 lg:py-2 md:text-base  bg-primary hover:opacity-80 hover:shadow-lg transition duration-500"
           >
             <span className="fill-current mr-3">
               <svg
@@ -76,7 +76,7 @@ const ListPermainan = () => {
             </span>
             Tambah Simulasi
           </Link>
-        }
+        )}
         {games.length === 0 ? (
           <div className="min-full-no-navbar relative pt-16">
             <div className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
@@ -125,7 +125,7 @@ const ListPermainan = () => {
                         </div>
                       </div>
                     </Link>
-                    {auth?.isAdmin &&
+                    {auth?.isAdmin && (
                       <div className="absolute top-2 right-2 flex items-center gap-x-2 z-[1]">
                         <Link
                           to={`${game.id}/edit`}
@@ -140,7 +140,7 @@ const ListPermainan = () => {
                           <i className="fa fa-trash"></i>
                         </button>
                       </div>
-                    }
+                    )}
                   </div>
                 ))}
               </div>
