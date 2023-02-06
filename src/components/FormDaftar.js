@@ -3,6 +3,7 @@ import fotodaftar from "../asset/img/sign_up.png";
 import axios from "../utils/axios";
 import { AlertContext } from "../contexts/AlertProvider";
 import { Link } from "react-router-dom";
+import axiosErrorToString from "../utils/axiosErrorToString";
 
 const FormDaftar = () => {
   const [email, setEmail] = React.useState("");
@@ -19,12 +20,9 @@ const FormDaftar = () => {
         confirmPassword
       })
       .then((res) => {
-        setAlert('success', 'Berhasil mendaftar, silahkan cek email anda untuk verifikasi');
+        setAlert('success', 'Berhasil mendaftar, silahkan cek email anda untuk verifikasi, jika tidak ada di inbox, silahkan cek di spam');
       })
-      .catch((err) => {
-        console.log(err)
-        setAlert('error', err.message + ' ');
-      });
+      .catch((err)=>setAlert('error', axiosErrorToString(err)));
   };
   
   return (

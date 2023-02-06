@@ -17,11 +17,11 @@ code {
 }
 
 .full-no-navbar {
-  @apply h-[calc(100vh-3.5rem)] h-[calc(100vh-5.5em)];
+  @apply h-[calc(100vh-3.5rem)] lg:h-[calc(100vh-5.5em)];
 }
 
 .min-full-no-navbar {
-  @apply min-h-[calc(100vh-3.5rem)] min-h-[calc(100vh-5.5em)];
+  @apply min-h-[calc(100vh-3.5rem)] lg:min-h-[calc(100vh-5.5em)];
 }
 
 .active {

@@ -13,6 +13,7 @@ import TambahSimulasi from "./pages/TambahSimulasi";
 import TambahForum from "./pages/TambahForum";
 import UbahForum from "./pages/UbahForum";
 import VerificationPage from "./pages/verifikasi/VerificationPage";
+import GantiPassword from "./pages/GantiPassword";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" element={<Landingpage />} />
           <Route path="/signin" element={<Masuk />} />
           <Route path="/signup" element={<Daftar />} />
+          <Route path="/password/verify/:token/:userId" element={<GantiPassword />} />
           <Route path="/account/verify/:token/:userId" element={<VerificationPage />} />
           <Route path="/forgot-password" element={<LupaPassword />} />
 

@@ -1,6 +1,6 @@
 import { createContext,  useState } from "react";
 
-export const AlertContext = createContext({setAlert : ()=>{}});
+export const AlertContext = createContext({setAlert : (status,text)=>{}});
 
 const TIMEOUT  = 3000;
 
@@ -32,14 +32,14 @@ const AlertProvider = ({
     return <>
         {
             <div className={
-                overrideClass ? className + ' ' : " text-white p-3 absolute z-20 top-4 left-1/2 -translate-x-1/2 transition transform shadow-lg rounded-md " 
+                overrideClass ? className + ' ' : " text-white p-3 fixed z-20 top-4 left-1/2 -translate-x-1/2 transition transform shadow-lg rounded-md w-[90vw] md:w-auto " 
                 + (status === 'success' ? classOnSuccess : '')
                 + (status === 'warning' ? classOnWarning : '')
                 + (status === 'error' ? classOnError : '') 
                 + (!display ? ' translate-y-3 opacity-0' : '')
-            }>
-                {text}
-            </div>
+            }
+                dangerouslySetInnerHTML={{__html: text}}
+            />
         }
         <AlertContext.Provider value={{setAlert}}>
             {children}
